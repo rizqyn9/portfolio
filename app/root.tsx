@@ -8,9 +8,12 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import normalizeCSS from "~/styles/normalize.css";
+import globalCSS from "~/styles/global.css";
+import { css } from "~/stitches.config";
 
 export const links: LinksFunction = () => [
   { href: normalizeCSS, rel: "stylesheet" },
+  { href: globalCSS, rel: "stylesheet" },
 ];
 
 export const meta: MetaFunction = () => ({
@@ -26,7 +29,15 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body
+        className={css({
+          background: "black",
+          color: "white",
+          fontFamily: "ClashDisplay-Variable",
+          fontWeight: 400,
+          fontSize: "4rem",
+        })()}
+      >
         <Outlet />
         <ScrollRestoration />
         <Scripts />
