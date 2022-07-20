@@ -1,26 +1,26 @@
-import type { CSS } from "~/stitches.config";
-import React from "react";
-import { DEFAULT_TAG } from "./Typography.constants";
-import { Text } from "./TypographyText";
+import type { CSS } from "~/stitches.config"
+import React from "react"
+import { DEFAULT_TAG } from "./Typography.constants"
+import { Text } from "./TypographyText"
 import type {
   HeadingProps,
   HeadingSizeVariants,
   ShortHandHeadingProps,
   TextSizeVariants,
-} from "./Typography.types";
+} from "./Typography.types"
 
 const Heading = React.forwardRef<
   React.ElementRef<typeof DEFAULT_TAG>,
   HeadingProps
 >((props, ref) => {
-  const { size = "1", ...rest } = props;
+  const { size = "1", ...rest } = props
 
   const headingSize: Record<HeadingSizeVariants, TextSizeVariants["size"]> = {
     1: { "@initial": "4" },
     2: { "@initial": "5" },
     3: { "@initial": "6" },
     4: { "@initial": "7" },
-  };
+  }
 
   const headingCSS: Record<HeadingSizeVariants, CSS> = {
     1: {
@@ -47,7 +47,7 @@ const Heading = React.forwardRef<
       letterSpacing: "0px",
       marginBottom: "1.45rem",
     },
-  };
+  }
 
   return (
     <Text
@@ -60,8 +60,8 @@ const Heading = React.forwardRef<
         ...props.css,
       }}
     />
-  );
-});
+  )
+})
 
 export const H1 = React.forwardRef<
   React.ElementRef<"h1">,
@@ -75,9 +75,9 @@ export const H1 = React.forwardRef<
     spaced={false}
     variant="primary"
   />
-));
+))
 
-H1.displayName = "H1";
+H1.displayName = "H1"
 
 export const H2 = React.forwardRef<
   React.ElementRef<"h2">,
@@ -91,9 +91,9 @@ export const H2 = React.forwardRef<
     spaced={false}
     variant="primary"
   />
-));
+))
 
-H2.displayName = "H2";
+H2.displayName = "H2"
 
 export const H3 = React.forwardRef<
   React.ElementRef<"h3">,
@@ -107,9 +107,9 @@ export const H3 = React.forwardRef<
     spaced={false}
     variant="primary"
   />
-));
+))
 
-H3.displayName = "H3";
+H3.displayName = "H3"
 
 export const H4 = React.forwardRef<
   React.ElementRef<"h4">,
@@ -123,10 +123,10 @@ export const H4 = React.forwardRef<
     spaced={false}
     variant="primary"
   />
-));
+))
 
-H4.displayName = "H4";
+H4.displayName = "H4"
 
-Heading.displayName = "Heading";
+Heading.displayName = "Heading"
 
-export default Heading;
+export { Heading }

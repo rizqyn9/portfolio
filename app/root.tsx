@@ -4,6 +4,7 @@ import { Outlet, ScrollRestoration } from "@remix-run/react"
 import globalCSS from "~/styles/global.css"
 import { globalStyles } from "./lib/globalStyles"
 import Document from "~/components/Layout/Document"
+import { NotFound } from "./components/Layout/404"
 
 export const links: LinksFunction = () => [
   // { href: normalizeCSS, rel: "stylesheet" },
@@ -27,5 +28,9 @@ export default function App() {
 }
 
 export function CatchBoundary() {
-  return <Document></Document>
+  return (
+    <Document>
+      <NotFound />
+    </Document>
+  )
 }
