@@ -16,50 +16,42 @@ const wrapperGrid = css({
 export default function () {
   return (
     <Layout header headerProps={{ offsetHeight: 256 }}>
-      <Grid columns="medium" gapX={4} gapY={12} className={wrapperGrid()}>
-        <Box>
-          <H1 weight="4">
-            Hello! 🙋, I'm Rizqy P.A.N . I help people make the world better
-            through quality software.
-            <Text variant="secondary" size="7" weight="4">
-              Here, I share through my writing my experience as a frontend
-              engineer and everything I'm learning about on React, Typescript,
-              SwiftUI, Serverless, and testing.
-            </Text>
-          </H1>
+      <Grid columns="medium" gapX={4} gapY={10} className={wrapperGrid()}>
+        <Box css={{ paddingBottom: "8rem" }}>
+          <H1 weight="4">Hello! 🙋, I'm Rizqy P.A.N.</H1>
+          <Text size="7">
+            I help people make the world better through quality software.
+          </Text>
         </Box>
       </Grid>
       <Box css={{ background: "var(--rdev-colors-emphasis)" }}>
         <Grid columns="medium" gapX={4} gapY={12} className={wrapperGrid()}>
-          <Box css={{ padding: "3rem 0" }}>
+          <Box css={{ padding: "4rem 0" }}>
             <H2>About me</H2>
-            <Text>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore
-              impedit ipsa, quis molestias repellendus harum saepe adipisci
-              repudiandae voluptates deserunt?
+            <Text variant="secondary" weight="2">
+              I'm is a freelance and full-stack developer based in Indonesia
+              with passion for building digital services/stuff. I have knack for
+              all things launching products from planning and designing all the
+              way to solving real-life problems with code.
             </Text>
           </Box>
         </Grid>
       </Box>
       <Box>
         <Grid columns="medium" gapX={4} gapY={12} className={wrapperGrid()}>
-          <Box css={{ padding: "3rem 0" }}>
+          <Box css={{ padding: "4rem 0" }}>
             <H2>Work</H2>
-            <Card<MotionProps> as={motion.div} initial="init" />
+            <Box
+              css={{ display: "flex", flexDirection: "column", gap: "3rem" }}
+            >
+              <Card title="Engineering Productivity" />
+              <Card title="blups.asia" />
+              <Card title="CI/CD Management" />
+              <Card title="Public API" />
+            </Box>
           </Box>
         </Grid>
       </Box>
     </Layout>
   )
 }
-
-const Glow = styled(motion.div, {
-  position: "absolute",
-  top: "0",
-  left: "0",
-  width: "100%",
-  height: "100%",
-  webkitFilter: "blur(15px)",
-  filter: "blur(15px)",
-  borderRadius: "var(--border-radius-2)",
-})

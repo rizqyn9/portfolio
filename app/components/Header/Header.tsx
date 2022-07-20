@@ -12,6 +12,7 @@ import { Flex } from "../Atoms/Flex"
 import { Box } from "../Atoms/Box"
 import { H1, Text } from "~/components/Typography"
 import { Link } from "@remix-run/react"
+import { motion } from "framer-motion"
 
 const headerVariants = {
   open: {
@@ -65,11 +66,43 @@ type NavLinkProps = {
   title: string
   to: string
 }
+
+const LinkMotion = motion(LinkStyled)
+
 function NavLink(props: NavLinkProps) {
   const { to, title } = props
   return (
-    <LinkStyled to={to}>
+    <LinkMotion
+      to={to}
+      initial="init"
+      whileHover="hover"
+      css={{
+        width: "5rem",
+        position: "relative",
+        overflow: "hidden",
+        textAlign: "center",
+      }}
+    >
       <Text>{title}</Text>
-    </LinkStyled>
+      <motion.div
+        style={{
+          width: "100%",
+          position: "absolute",
+          height: "10px",
+          y: "-20px",
+          background: "var(--rdev-colors-emphasis)",
+        }}
+        variants={{
+          init: {
+            height: "10px",
+            x: "-100%",
+          },
+          hover: {
+            height: "30px",
+            x: "0%",
+          },
+        }}
+      ></motion.div>
+    </LinkMotion>
   )
 }
