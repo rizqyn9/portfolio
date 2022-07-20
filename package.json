@@ -28,5 +28,8 @@
   },
   "engines": {
     "node": ">=14"
+  },
+  "prettier": {
+    "semi": false
   }
 }

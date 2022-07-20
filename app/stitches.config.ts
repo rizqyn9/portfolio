@@ -1,16 +1,15 @@
-import { createStitches } from "@stitches/react";
+import { createStitches, type CSS as StitchesCSS } from "@stitches/react";
+import { radii } from "./lib/tokens/radii";
 
-const { styled, css, keyframes, getCssText, theme, config, globalCss } =
+const { config, css, getCssText, globalCss, keyframes, styled, theme } =
   createStitches({
     theme: {
-      colors: {
-        gray400: "gainsboro",
-        gray500: "lightgray",
-      },
-    },
-    media: {
-      bp1: "(min-width: 480px)",
+      radii,
     },
   });
 
-export { config, css, getCssText, keyframes, styled, theme, globalCss };
+export type CSS = StitchesCSS<typeof config>;
+export type { VariantProps } from "@stitches/react";
+
+export { Shadows } from "./lib/tokens/shadows";
+export { config, css, getCssText, globalCss, keyframes, styled, theme };
