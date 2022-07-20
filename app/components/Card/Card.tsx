@@ -1,8 +1,10 @@
 import { H4, Text } from "../Typography"
 import { Box } from "~/components/Atoms/Box"
 import { styled } from "~/stitches.config"
+import { motion } from "framer-motion"
 
 const Image = styled("img", {})
+const ImageMotion = motion(Image)
 
 type CardProps = {
   title: string
@@ -11,7 +13,7 @@ type CardProps = {
 export function Card<T extends object = object>(props: CardProps & T) {
   const { title, ...rest } = props
   return (
-    <Box {...rest} css={{}}>
+    <motion.div whileHover="hover">
       <Box
         css={{
           background: "var(--rdev-colors-emphasis)",
@@ -46,7 +48,12 @@ export function Card<T extends object = object>(props: CardProps & T) {
               inset: "0px",
             }}
           >
-            <Image
+            <ImageMotion
+              variants={{
+                hover: {
+                  scale: 1.1,
+                },
+              }}
               css={{
                 position: "absolute",
                 inset: "0px",
@@ -73,6 +80,6 @@ export function Card<T extends object = object>(props: CardProps & T) {
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et,
         doloremque!
       </Text>
-    </Box>
+    </motion.div>
   )
 }

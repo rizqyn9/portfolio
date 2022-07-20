@@ -1,15 +1,9 @@
 import type { LinksFunction, MetaFunction } from "@remix-run/node"
-import {
-  Links,
-  LiveReload,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} from "@remix-run/react"
+import { Outlet, ScrollRestoration } from "@remix-run/react"
 // import normalizeCSS from "~/styles/normalize.css"
 import globalCSS from "~/styles/global.css"
 import { globalStyles } from "./lib/globalStyles"
+import Document from "~/components/Layout/Document"
 
 export const links: LinksFunction = () => [
   // { href: normalizeCSS, rel: "stylesheet" },
@@ -25,17 +19,13 @@ export const meta: MetaFunction = () => ({
 
 export default function App() {
   return (
-    <html lang="en" className="rdev-dark">
-      <head>
-        <Meta />
-        <Links />
-      </head>
-      <body>
-        <Outlet />
-        <ScrollRestoration />
-        <Scripts />
-        <LiveReload />
-      </body>
-    </html>
+    <Document>
+      <Outlet />
+      <ScrollRestoration />
+    </Document>
   )
+}
+
+export function CatchBoundary() {
+  return <Document></Document>
 }

@@ -1,11 +1,5 @@
 import useScrollCounter from "~/hooks/useScrollCounter"
-import {
-  HeaderWrapper,
-  HeaderContent,
-  fixTruncate,
-  HeaderPadding,
-  LinkStyled,
-} from "./Header.styles"
+import { HeaderWrapper, HeaderPadding, LinkStyled } from "./Header.styles"
 import type { HeaderProps } from "./Header.types"
 import { Grid } from "../Atoms/Grid/Grid"
 import { Flex } from "../Atoms/Flex"
