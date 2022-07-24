@@ -3,7 +3,7 @@ import { styled } from "~/stitches.config"
 
 export const Container = styled(motion.div, {
   position: "fixed",
-  zIndex: 8,
+  zIndex: 12,
   top: 0,
   left: 0,
   right: 0,
@@ -52,7 +52,7 @@ export const HeaderStyled = styled("header", {
   justifyContent: "space-between",
   padding: "2rem 4rem",
   position: "fixed",
-  zIndex: 10,
+  zIndex: 13,
   width: "100%",
   // mixBlendMode: "difference",
   fontWeight: "bolder",

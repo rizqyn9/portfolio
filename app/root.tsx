@@ -5,11 +5,13 @@ import normalizeCSS from "~/styles/normalize.css"
 import { globalStyles } from "./lib/globalStyles"
 import { NotFound } from "./components/Layout/404"
 import { Cursor } from "~/components/Cursor"
+import { linksFont } from "./lib/fonts"
 
 export const links: LinksFunction = () => [
   { href: normalizeCSS, rel: "stylesheet" },
   { href: globalCSS, rel: "stylesheet" },
   { href: globalStyles(), rel: "stylesheet" },
+  ...linksFont,
 ]
 
 export const meta: MetaFunction = () => ({
@@ -45,7 +47,7 @@ function Document({ children, title }: { children: React.ReactNode; title?: stri
         <Meta />
         <Links />
       </head>
-      <body className="rdev-dark">
+      <body className="rdev-dark" style={{ fontFamily: "Panchang-Regular", fontWeight: "bold" }}>
         <Cursor />
         {children}
         <ScrollRestoration />

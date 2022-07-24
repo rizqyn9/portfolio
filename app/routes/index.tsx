@@ -4,6 +4,7 @@ import { Header } from "~/components/Header"
 import { type CSS, styled } from "~/stitches.config"
 import { useCursorStore } from "~/components/Cursor"
 import { Carousel } from "~/components/Section/Carousel"
+import { Trailing } from "~/components/Atoms/Trailing"
 
 export default function () {
   const [active, setActive] = React.useState(false)
@@ -22,11 +23,18 @@ export default function () {
           Developer
         </TitleWord>
       </TitleContainer>
-      <div style={{ height: "100vh", background: "var(--rdev-colors-body)" }}>
+      <div style={{ height: "100vh", background: "var(--rdev-colors-body)" }}></div>
+      <div style={{ height: "100vh", display: "flex", position: "relative", zIndex: 8, mixBlendMode: "difference", background: "white" }}>
         <Carousel />
       </div>
-      <div style={{ height: "100vh", display: "flex", position: "relative", zIndex: 8, mixBlendMode: "difference", background: "white" }}></div>
-      <div style={{ height: "100vh", background: "red", position: "relative", zIndex: 8 }}></div>
+      <div style={{ height: "100vh", position: "relative", zIndex: 8, background: "black" }}>
+        <Trailing />
+        <div style={{ paddingLeft: "3rem", fontSize: "1.2em", maxWidth: "30rem" }}>
+          Rdev is a freelance and a full-stack developer based in Indonesia with a passion for building digital services/stuff he wants. He has a
+          knack for all things launching products, from planning and designing all the way to solving real-life problems with code. When not online,
+          he loves hanging out with his camera. Currently, he is living off of his own product called Callme.
+        </div>
+      </div>
       <div style={{ height: "100vh", background: "blue" }}></div>
     </div>
   )
@@ -47,7 +55,7 @@ const TitleContainer = styled(motion.div, {
   justifyContent: "center",
   fontSize: "5em",
   "@sm": {
-    fontSize: "7em",
+    fontSize: "10em",
   },
 
   willChange: "transform",
