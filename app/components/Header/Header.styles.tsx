@@ -1,84 +1,72 @@
-import { css, styled } from "~/stitches.config"
 import { motion } from "framer-motion"
-import { Flex } from "../Atoms/Flex"
-import { Link } from "@remix-run/react"
+import { styled } from "~/stitches.config"
 
-export const HeaderWrapper = styled(motion.header, {
+export const Container = styled(motion.div, {
   position: "fixed",
-  zIndex: 10,
-  top: "0",
-  backdropFilter: "blur(8px)",
-  width: "100%",
-  transition: "background-color 0.5s, border-color 0.5s",
-  background: "var(--rdev-colors-header)",
-  borderBottom: "1px solid",
+  zIndex: 100,
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
 
-  "@media (max-width: 700px)": {
-    height: "64px !important",
+  variants: {
+    overlay: {
+      true: {
+        background: "gray",
+        willChange: "transform",
+      },
+      false: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: "2rem",
+      },
+    },
   },
 })
 
-export const HeaderTitleWrapper = styled("div", {
+export const NavLinkStyle = styled(motion.div, {
+  fontSize: "4em",
+  display: "grid",
+  gridTemplateColumns: "auto auto",
+  gap: ".6rem",
+  justifySelf: "flex-start",
+  alignSelf: "flex-start",
+  marginLeft: "3rem",
+
+  "& > .prefix": {
+    fontSize: ".5em",
+    display: "flex",
+  },
+
+  "& > .overflow": {
+    overflow: "hidden",
+    height: "auto",
+  },
+})
+
+export const HeaderStyled = styled("header", {
   display: "flex",
-  marginLeft: "40px",
-  marginRight: "40px",
-  overflow: "hidden",
-
-  a: {
-    color: "inherit",
-    textDecoration: "none",
-  },
-
-  "@media (max-width: 700px)": {
-    display: "none",
-  },
-})
-
-export const HeaderProgressBar = styled("div", {
-  "@media (min-width: 700px)": {
-    display: "none",
-  },
-
+  justifyContent: "space-between",
+  padding: "2rem 4rem",
+  position: "fixed",
+  zIndex: 200,
   width: "100%",
-  background: "transparent",
-  position: "relative",
-  height: 1,
+  mixBlendMode: "difference",
 
-  "&:after": {
-    content: "",
-    position: "absolute",
-    top: -2,
-    left: 0,
-    background: "var(--rdev-colors-typeface-tertiary)",
-    transition: "width 0.5s",
-    willChange: "width",
-    height: 2,
-    width: "var(--progress)",
+  "& .menu": {
+    overflow: "hidden",
+    height: "2rem",
+    width: "4rem",
   },
-})
 
-export const HeaderPadding = styled("div", {
-  height: "var(--offsetHeight)",
-  "@media (max-width: 700px)": {
-    height: "calc(var(--offsetHeight) * 0.6)",
-  },
-})
-
-export const HeaderContent = styled(Flex, {
-  gridColumn: 2,
-})
-
-export const fixTruncate = css({
-  flex: 1,
-  minWidth: 0,
-})
-
-export const LinkStyled = styled(Link, {
-  color: "white",
-  textDecoration: "none",
-  "--border-color": "transparent",
-  borderBottom: "3px solid var(--border-color)",
-  "&:hover": {
-    "--border-color": "var(--rdev)",
+  "& .container": {
+    position: "relative",
+    "& p": {
+      position: "absolute",
+      top: -20,
+      right: 0,
+    },
   },
 })

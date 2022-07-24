@@ -13,7 +13,7 @@ type CardProps = {
 export function Card<T extends object = object>(props: CardProps & T) {
   const { title, ...rest } = props
   return (
-    <motion.div whileHover="hover">
+    <motion.div whileHover="hover" whileFocus="hover">
       <Box
         css={{
           background: "var(--rdev-colors-emphasis)",

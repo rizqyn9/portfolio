@@ -30,6 +30,7 @@
     "node": ">=14"
   },
   "prettier": {
-    "semi": false
+    "semi": false,
+    "printWidth": 150
   }
 }

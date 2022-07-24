@@ -1,102 +1,82 @@
-import useScrollCounter from "~/hooks/useScrollCounter"
-import { HeaderWrapper, HeaderPadding, LinkStyled } from "./Header.styles"
-import type { HeaderProps } from "./Header.types"
-import { Grid } from "../Atoms/Grid/Grid"
-import { Flex } from "../Atoms/Flex"
-import { Box } from "../Atoms/Box"
-import { H1, Text } from "~/components/Typography"
-import { Link } from "@remix-run/react"
-import { motion } from "framer-motion"
+import { AnimatePresence, motion, useAnimation } from "framer-motion"
+import { Container, NavLinkStyle, HeaderStyled } from "."
 
-const headerVariants = {
-  open: {
-    height: 120,
-    transition: { ease: "easeInOut", duration: 0.3 },
-  },
-  collapsed: {
-    height: 60,
-    transition: { ease: "easeInOut", duration: 0.3, delayChildren: 0.5 },
-  },
+type HeaderProps = {
+  active: boolean
+  setActive(active: boolean): void
 }
 
 export function Header(props: HeaderProps) {
-  const { offsetHeight = 120 } = props
-  const reached = useScrollCounter(offsetHeight / 2)
-
+  const { active, setActive } = props
+  useAnimation()
   return (
     <>
-      <HeaderWrapper
-        initial="open"
-        variants={headerVariants}
-        animate={reached ? "collapsed" : "open"}
-        css={{
-          borderColor: reached ? "var(--rdev-border-color)" : "transparent",
-        }}
-      >
-        <Grid columns="medium" gapX={4}>
-          <Box
-            css={{
-              gridColumn: 2,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
-            <H1 css={{ margin: 0 }}>RDev</H1>
-            <Box css={{ display: "flex", gap: "1rem" }}>
-              {["Home", "Snippets", "Blogs"].map((val) => (
-                <NavLink title={val} key={val} to={val} />
-              ))}
-            </Box>
-          </Box>
-        </Grid>
-      </HeaderWrapper>
-      <HeaderPadding css={{ "--offsetHeight": `${offsetHeight}px` }} />
+      <HeaderStyled>
+        <h1 className="title">RDev</h1>
+        <button onClick={() => setActive(!active)} className="menu">
+          <motion.div className="container" layout animate={active ? "active" : "none"}>
+            <motion.p
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1 }}
+              variants={{ active: { y: 0 }, none: { y: 40 } }}
+              transition={{ duration: 1 }}
+            >
+              Close
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              variants={{ active: { y: -40 }, none: { y: 0 } }}
+              transition={{ duration: 1 }}
+            >
+              Menu
+            </motion.p>
+          </motion.div>
+        </button>
+      </HeaderStyled>
+      <AnimatePresence>
+        {active && (
+          <>
+            <Container
+              overlay
+              initial={{ height: 0 }}
+              animate={{ height: "100%" }}
+              exit={{ height: "0", transition: { duration: 1.5 } }}
+              transition={{ duration: 0.8 }}
+            />
+            <Container overlay={false} transition={{ staggerChildren: 100 }}>
+              <Navlink>Home</Navlink>
+              <Navlink>Work</Navlink>
+              <Navlink>About</Navlink>
+              <Navlink>Contact</Navlink>
+            </Container>
+          </>
+        )}
+      </AnimatePresence>
     </>
   )
 }
 
-type NavLinkProps = {
-  title: string
-  to: string
-}
-
-const LinkMotion = motion(LinkStyled)
-
-function NavLink(props: NavLinkProps) {
-  const { to, title } = props
+function Navlink({ children }: { children: React.ReactNode }) {
   return (
-    <LinkMotion
-      to={to}
-      initial="init"
-      whileHover="hover"
-      css={{
-        width: "5rem",
-        position: "relative",
-        overflow: "hidden",
-        textAlign: "center",
-      }}
-    >
-      <Text>{title}</Text>
-      <motion.div
-        style={{
-          width: "100%",
-          position: "absolute",
-          height: "10px",
-          y: "-20px",
-          background: "var(--rdev-colors-emphasis)",
+    <NavLinkStyle>
+      <motion.p
+        className="prefix"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0, transition: { duration: 0.5 } }}
+        transition={{
+          delay: 1.2,
+          duration: 0.3,
         }}
-        variants={{
-          init: {
-            height: "10px",
-            x: "-100%",
-          },
-          hover: {
-            height: "30px",
-            x: "0%",
-          },
-        }}
-      ></motion.div>
-    </LinkMotion>
+      >
+        01.
+      </motion.p>
+      <div className="overflow">
+        <motion.p initial={{ y: "-2em" }} animate={{ y: 0 }} exit={{ y: "-2em", transition: { duration: 1 } }} transition={{ duration: 1.5 }}>
+          {children}
+        </motion.p>
+      </div>
+    </NavLinkStyle>
   )
 }

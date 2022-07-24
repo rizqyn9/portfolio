@@ -1,4 +1,9 @@
-import { RemixBrowser } from "@remix-run/react";
-import { hydrate } from "react-dom";
+import { RemixBrowser, type RemixBrowserProps } from "@remix-run/react"
+import { hydrate } from "react-dom"
+import { globalStyles } from "./lib/globalStyles"
 
-hydrate(<RemixBrowser />, document);
+function EntryClient(props: RemixBrowserProps) {
+  globalStyles()
+  return <RemixBrowser {...props} />
+}
+hydrate(<EntryClient />, document)
