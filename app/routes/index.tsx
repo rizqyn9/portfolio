@@ -3,6 +3,7 @@ import { motion, type MotionValue } from "framer-motion"
 import { Header } from "~/components/Header"
 import { type CSS, styled } from "~/stitches.config"
 import { useCursorStore } from "~/components/Cursor"
+import { Carousel } from "~/components/Section/Carousel"
 
 export default function () {
   const [active, setActive] = React.useState(false)
@@ -21,7 +22,9 @@ export default function () {
           Developer
         </TitleWord>
       </TitleContainer>
-      <div style={{ height: "100vh", background: "var(--rdev-colors-body)" }}></div>
+      <div style={{ height: "100vh", background: "var(--rdev-colors-body)" }}>
+        <Carousel />
+      </div>
       <div style={{ height: "100vh", display: "flex", position: "relative", zIndex: 8, mixBlendMode: "difference", background: "white" }}></div>
       <div style={{ height: "100vh", background: "red", position: "relative", zIndex: 8 }}></div>
       <div style={{ height: "100vh", background: "blue" }}></div>

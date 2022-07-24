@@ -11,10 +11,11 @@ export const Container = styled(motion.div, {
   bottom: 0,
   right: 0,
   zIndex: "100",
-  mixBlendMode: "difference",
+  // mixBlendMode: "difference",
 
   "& .outer": {
     position: "relative",
     borderRadius: "100%",
+    fontSize: ".8em",
   },
 })
