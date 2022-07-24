@@ -53,7 +53,14 @@ export const HeaderStyled = styled("header", {
   position: "fixed",
   zIndex: 200,
   width: "100%",
-  mixBlendMode: "difference",
+  // mixBlendMode: "difference",
+  fontWeight: "bolder",
+
+  "& .overflow": {
+    overflow: "hidden",
+  },
+
+  "& .title": {},
 
   "& .menu": {
     overflow: "hidden",
@@ -63,10 +70,15 @@ export const HeaderStyled = styled("header", {
 
   "& .container": {
     position: "relative",
+    height: "calc(100% * 2)",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
     "& p": {
-      position: "absolute",
-      top: -20,
-      right: 0,
+      flex: "1 1 50%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
     },
   },
 })

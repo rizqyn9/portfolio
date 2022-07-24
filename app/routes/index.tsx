@@ -1,5 +1,5 @@
 import React from "react"
-import { motion, type MotionValue, useScroll, useTransform, useMotionValue, useTime } from "framer-motion"
+import { motion, type MotionValue, useScroll, useTransform } from "framer-motion"
 import { Header } from "~/components/Header"
 import { type CSS, styled } from "~/stitches.config"
 
@@ -69,10 +69,10 @@ const TitleWord = ({ children, css, index, x }: { children: React.ReactNode; css
       <div className="overflow">
         <motion.p
           style={{ color: "white", overflow: "visible", zIndex: 0, fontWeight: "bolder", transformStyle: "preserve-3d" }}
-          initial={{ y: "3em" }}
+          initial={{ y: "2em" }}
           animate={{ y: 0 }}
           transition={{
-            duration: 1.8,
+            duration: 1,
             delay: index,
           }}
         >

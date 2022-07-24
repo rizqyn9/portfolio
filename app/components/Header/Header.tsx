@@ -1,4 +1,4 @@
-import { AnimatePresence, motion, useAnimation } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 import { Container, NavLinkStyle, HeaderStyled } from "."
 
 type HeaderProps = {
@@ -8,29 +8,28 @@ type HeaderProps = {
 
 export function Header(props: HeaderProps) {
   const { active, setActive } = props
-  useAnimation()
   return (
     <>
       <HeaderStyled>
-        <h1 className="title">RDev</h1>
+        <div className="overflow">
+          <motion.h1 className="title" initial={{ y: 30 }} animate={{ y: 0 }} transition={{ duration: 1 }}>
+            RDev
+          </motion.h1>
+        </div>
         <button onClick={() => setActive(!active)} className="menu">
-          <motion.div className="container" layout animate={active ? "active" : "none"}>
-            <motion.p
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1 }}
-              variants={{ active: { y: 0 }, none: { y: 40 } }}
-              transition={{ duration: 1 }}
-            >
-              Close
-            </motion.p>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              variants={{ active: { y: -40 }, none: { y: 0 } }}
-              transition={{ duration: 1 }}
-            >
-              Menu
-            </motion.p>
+          <motion.div
+            className="container"
+            layout
+            animate={active ? "active" : "none"}
+            initial={{ marginTop: "100%" }}
+            variants={{
+              active: { marginTop: "-50%" },
+              none: { marginTop: "0%" },
+            }}
+            transition={{ duration: 1 }}
+          >
+            <p>Menu</p>
+            <p>Close</p>
           </motion.div>
         </button>
       </HeaderStyled>
