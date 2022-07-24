@@ -76,6 +76,7 @@ const TitleWord = ({ children, css, index, x }: { children: React.ReactNode; css
             delay: index,
           }}
         >
+          <span style={{ fontSize: "35px" }}>Bismillah Cari Kerja</span>
           {children}
         </motion.p>
       </div>
