@@ -1,10 +1,14 @@
+import { Link } from "@remix-run/react"
 import { AnimatePresence, motion } from "framer-motion"
 import { Container, NavLinkStyle, HeaderStyled } from "."
+import { useCursorStore } from "../Cursor"
 
 type HeaderProps = {
   active: boolean
   setActive(active: boolean): void
 }
+
+const LinkMotion = motion(Link)
 
 export function Header(props: HeaderProps) {
   const { active, setActive } = props
@@ -12,9 +16,9 @@ export function Header(props: HeaderProps) {
     <>
       <HeaderStyled>
         <div className="overflow">
-          <motion.h1 className="title" initial={{ y: 30 }} animate={{ y: 0 }} transition={{ duration: 1 }}>
+          <LinkMotion style={{ display: "block" }} to="/" className="title" initial={{ y: 30 }} animate={{ y: 0 }} transition={{ duration: 1 }}>
             RDev
-          </motion.h1>
+          </LinkMotion>
         </div>
         <button onClick={() => setActive(!active)} className="menu">
           <motion.div
@@ -57,8 +61,9 @@ export function Header(props: HeaderProps) {
 }
 
 function Navlink({ children }: { children: React.ReactNode }) {
+  const { update } = useCursorStore()
   return (
-    <NavLinkStyle>
+    <NavLinkStyle onMouseEnter={() => update("focus")} onMouseLeave={() => update("basic")}>
       <motion.p
         className="prefix"
         initial={{ opacity: 0 }}

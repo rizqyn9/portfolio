@@ -1,30 +1,29 @@
 import React from "react"
-import { motion, type MotionValue, useScroll, useTransform } from "framer-motion"
+import { motion, type MotionValue } from "framer-motion"
 import { Header } from "~/components/Header"
 import { type CSS, styled } from "~/stitches.config"
+import { useCursorStore } from "~/components/Cursor"
 
 export default function () {
   const [active, setActive] = React.useState(false)
-  const { scrollYProgress } = useScroll()
-  const x = useTransform(scrollYProgress, [0, 1], [0, 200])
-  const x2 = useTransform(scrollYProgress, [0, 1], [0, -500])
+  const { update } = useCursorStore()
+  // const { scrollYProgress } = useScroll()
+  // const x = useTransform(scrollYProgress, [0, 1], [0, 200])
+  // const x2 = useTransform(scrollYProgress, [0, 1], [0, -500])
   return (
-    <div>
+    <div onMouseEnter={() => update("basic")}>
       <Header active={active} setActive={setActive} />
       <TitleContainer css={{ padding: "0 5vw", "@md": { padding: "0 20vw" } }}>
-        <TitleWord index={0} css={{ marginRight: "auto" }} x={x}>
+        <TitleWord index={0} css={{ marginRight: "auto" }}>
           Creative
         </TitleWord>
-        <TitleWord index={0.5} css={{ marginLeft: "auto" }} x={x2}>
-          Web
-        </TitleWord>
-        <TitleWord index={1} css={{ marginRight: "auto" }} x={x}>
+        <TitleWord index={1} css={{ marginLeft: "auto" }}>
           Developer
         </TitleWord>
       </TitleContainer>
       <div style={{ height: "100vh", background: "var(--rdev-colors-body)" }}></div>
-      <div style={{ height: "100vh", display: "flex", position: "relative", zIndex: 20, mixBlendMode: "difference", background: "white" }}></div>
-      <div style={{ height: "100vh", background: "red", position: "relative", zIndex: 20 }}></div>
+      <div style={{ height: "100vh", display: "flex", position: "relative", zIndex: 8, mixBlendMode: "difference", background: "white" }}></div>
+      <div style={{ height: "100vh", background: "red", position: "relative", zIndex: 8 }}></div>
       <div style={{ height: "100vh", background: "blue" }}></div>
     </div>
   )
@@ -76,7 +75,6 @@ const TitleWord = ({ children, css, index, x }: { children: React.ReactNode; css
             delay: index,
           }}
         >
-          <span style={{ fontSize: "35px" }}>Bismillah Cari Kerja</span>
           {children}
         </motion.p>
       </div>

@@ -1,18 +1,10 @@
 import type { LinksFunction, MetaFunction } from "@remix-run/node"
-import {
-  Outlet,
-  ScrollRestoration,
-  Meta,
-  Links,
-  Scripts,
-  LiveReload,
-} from "@remix-run/react"
+import { Outlet, ScrollRestoration, Meta, Links, Scripts, LiveReload } from "@remix-run/react"
 import globalCSS from "~/styles/global.css"
 import normalizeCSS from "~/styles/normalize.css"
 import { globalStyles } from "./lib/globalStyles"
 import { NotFound } from "./components/Layout/404"
-import { Header } from "./components/Header"
-import { Layout } from "./components/Layout"
+import { Cursor } from "~/components/Cursor"
 
 export const links: LinksFunction = () => [
   { href: normalizeCSS, rel: "stylesheet" },
@@ -43,13 +35,7 @@ export function CatchBoundary() {
   )
 }
 
-function Document({
-  children,
-  title,
-}: {
-  children: React.ReactNode
-  title?: string
-}) {
+function Document({ children, title }: { children: React.ReactNode; title?: string }) {
   return (
     <html lang="en">
       <head>
@@ -60,6 +46,7 @@ function Document({
         <Links />
       </head>
       <body className="rdev-dark">
+        <Cursor />
         {children}
         <ScrollRestoration />
         <Scripts />

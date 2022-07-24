@@ -3,7 +3,7 @@ import { styled } from "~/stitches.config"
 
 export const Container = styled(motion.div, {
   position: "fixed",
-  zIndex: 100,
+  zIndex: 8,
   top: 0,
   left: 0,
   right: 0,
@@ -34,6 +34,7 @@ export const NavLinkStyle = styled(motion.div, {
   justifySelf: "flex-start",
   alignSelf: "flex-start",
   marginLeft: "3rem",
+  cursor: "none",
 
   "& > .prefix": {
     fontSize: ".5em",
@@ -51,7 +52,7 @@ export const HeaderStyled = styled("header", {
   justifyContent: "space-between",
   padding: "2rem 4rem",
   position: "fixed",
-  zIndex: 200,
+  zIndex: 10,
   width: "100%",
   // mixBlendMode: "difference",
   fontWeight: "bolder",
