@@ -9,8 +9,13 @@ const SVGMotion = styled(motion.svg, {})
 
 const Container = styled("div", {
   position: "fixed",
-  bottom: "2rem",
-  right: "2rem",
+  margin: "auto",
+  bottom: "3rem",
+  "@md": {
+    bottom: "2rem",
+    right: "2rem",
+  },
+  mixBlendMode: "difference",
 })
 
 function KeepScroll() {
@@ -42,7 +47,7 @@ function KeepScroll() {
           <path id="circle" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" />
         </defs>
         <TextSvgStyled>
-          <textPath xlinkHref="#circle">👋🏼 Keep Scrolling 👋🏼 Keep Scrolling</textPath>
+          <textPath xlinkHref="#circle">&bull; Keep &bull; Scrolling &bull; Keep &bull; Scrolling</textPath>
         </TextSvgStyled>
       </SVGMotion>
     </Container>

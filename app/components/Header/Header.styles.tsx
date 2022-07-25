@@ -49,6 +49,7 @@ export const NavLinkStyle = styled(motion.div, {
 })
 
 export const HeaderStyled = styled(Layout, {
+  mx: "auto !important",
   bg: "transparent",
   display: "flex",
   justifyContent: "space-between",

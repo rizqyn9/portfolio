@@ -1,7 +1,7 @@
 import { styled } from "~/stitches.config"
 import { motion, useScroll, useTransform } from "framer-motion"
 
-const Wrapper = styled("section", {
+const Wrapper = styled(motion.section, {
   height: "100vh",
   maxWidth: "100%",
   overflow: "hidden",
@@ -9,8 +9,17 @@ const Wrapper = styled("section", {
   display: "flex",
   justifyContent: "center",
   flexDirection: "column",
+  position: "fixed",
+  top: 0,
+  bottom: "0",
+  left: "3rem",
+  right: "3rem",
 
   fontSize: "13vw",
+  mixBlendMode: "difference",
+  zIndex: 10,
+
+  pointerEvents: "none",
 })
 
 const H1Styled = styled(motion.h1, {
@@ -32,13 +41,17 @@ function HomeTitle() {
   const { scrollYProgress } = useScroll()
   const x = useTransform(scrollYProgress, [0, 0.2], [0, 2_00])
   const x2 = useTransform(scrollYProgress, [0, 0.3], [0, -2_00])
+  const y = useTransform(scrollYProgress, [0, 0.5], [0, 6_00])
   return (
-    <Wrapper>
-      <H1Styled style={{ x }}>Creative</H1Styled>
-      <H1Styled style={{ x: x2 }} css={{ marginLeft: "auto" }}>
-        Developer
-      </H1Styled>
-    </Wrapper>
+    <>
+      <div style={{ height: "100vh" }}></div>
+      <Wrapper style={{}}>
+        <H1Styled style={{ x }}>Creative</H1Styled>
+        <H1Styled style={{ x: x2 }} css={{ marginLeft: "auto" }}>
+          Developer
+        </H1Styled>
+      </Wrapper>
+    </>
   )
 }
 

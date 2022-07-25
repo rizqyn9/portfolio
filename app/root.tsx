@@ -6,6 +6,7 @@ import { globalStyles } from "./lib/globalStyles"
 import { NotFound } from "./components/Layout/404"
 import { Cursor } from "~/components/Cursor"
 import { linksFont } from "./lib/fonts"
+import { useCursorStore } from "~/components/Cursor"
 
 export const links: LinksFunction = () => [
   { href: normalizeCSS, rel: "stylesheet" },
@@ -38,6 +39,8 @@ export function CatchBoundary() {
 }
 
 function Document({ children, title }: { children: React.ReactNode; title?: string }) {
+  const { update } = useCursorStore()
+
   return (
     <html lang="en">
       <head>
@@ -47,7 +50,11 @@ function Document({ children, title }: { children: React.ReactNode; title?: stri
         <Meta />
         <Links />
       </head>
-      <body className="rdev-dark" style={{ fontFamily: "Panchang-Regular", fontWeight: "bold" }}>
+      <body
+        className="rdev-dark"
+        style={{ fontFamily: "Panchang-Regular", fontWeight: "bold", display: "flex", flexDirection: "column" }}
+        onMouseEnter={() => update("basic")}
+      >
         <Cursor />
         {children}
         <ScrollRestoration />
