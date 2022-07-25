@@ -4,28 +4,23 @@ import React from "react"
 import { ImageReveal } from "../ImageReveal"
 
 const ContainerCarousel = styled("div", {
-  //   bg: "white",
-  display: "grid",
-  gridTemplateColumns: "repeat(auto-fill, 10rem)",
-  gap: "1rem",
-  py: "10rem",
-})
-
-const ImageContainer = styled(motion.div, {
-  width: "10rem",
-  height: "20rem",
-  backgroundSize: "cover",
+  display: "flex",
+  alignItems: "flex-start",
+  justifyContent: "space-between",
+  height: "100vh",
+  py: "20vh",
+  px: "5vw",
+  maxWidth: "100%",
+  flexWrap: "wrap",
 })
 
 function HomeCarousel() {
-  const ref = React.useRef<HTMLDivElement | null>(null)
-  const inView = useInView(ref, { once: true })
-
   return (
     <ContainerCarousel>
-      <ImageReveal src="/img/pic5.png" css={{ mt: "-5rem" }} />
-      <ImageReveal src="/img/pic4.png" css={{ mt: "20rem", ml: "-2vw" }} />
-      <ImageReveal src="/img/pic3.png" css={{ mt: "8rem", ml: "10vw" }} />
+      <ImageReveal src="/img/1.png" css={{ width: "22%" }} />
+      <ImageReveal src="/img/1.png" css={{ width: "29%", mr: "1%", ml: "auto", mt: "20%" }} />
+      <ImageReveal src="/img/1.png" css={{ width: "30%", mt: "0%" }} />
+      <ImageReveal src="/img/1.png" css={{ width: "15%", mt: "15%" }} />
     </ContainerCarousel>
   )
 }

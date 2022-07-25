@@ -33,7 +33,7 @@ function HomeTitle() {
   // const x2 = useTransform(scrollYProgress, [0, 0.3], [0, -2_00])
   return (
     <>
-      {/* <div style={{ height: "100vh" }}></div> */}
+      <div style={{ height: "100vh" }}></div>
       <Wrapper style={{}}>
         <H1Styled style={{}}>Creative</H1Styled>
         <H1Styled style={{}} css={{ marginLeft: "auto" }}>

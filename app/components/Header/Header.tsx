@@ -25,12 +25,7 @@ export function Header(props: HeaderProps) {
             <motion.p className="toggle" animate={active ? "show" : "hide"} initial={"hide"} variants={{ show: { y: "0rem" }, hide: { y: "-2rem" } }}>
               Close
             </motion.p>
-            <motion.p
-              className="toggle"
-              animate={active ? "hide" : "show"}
-              initial={"hide"}
-              variants={{ show: { y: "-1.4rem" }, hide: { y: "1rem" } }}
-            >
+            <motion.p className="toggle" animate={active ? "hide" : "show"} initial={"hide"} variants={{ show: { y: "-2rem" }, hide: { y: "1rem" } }}>
               Open
             </motion.p>
           </button>
