@@ -1,5 +1,5 @@
 import { Link } from "@remix-run/react"
-import { AnimatePresence, motion } from "framer-motion"
+import { AnimatePresence, motion, MotionConfig, useTransform } from "framer-motion"
 import { Container, NavLinkStyle, HeaderStyled } from "."
 import { useCursorStore } from "../Cursor"
 
@@ -15,27 +15,26 @@ export function Header(props: HeaderProps) {
   return (
     <>
       <HeaderStyled>
-        <div className="overflow">
-          <LinkMotion style={{ display: "block" }} to="/" className="title" initial={{ y: 30 }} animate={{ y: 0 }} transition={{ duration: 1 }}>
-            RDev
-          </LinkMotion>
-        </div>
-        <button onClick={() => setActive(!active)} className="menu">
-          <motion.div
-            className="container"
-            layout
-            animate={active ? "active" : "none"}
-            initial={{ marginTop: "100%" }}
-            variants={{
-              active: { marginTop: "-50%" },
-              none: { marginTop: "0%" },
-            }}
-            transition={{ duration: 1 }}
-          >
-            <p>Menu</p>
-            <p>Close</p>
-          </motion.div>
-        </button>
+        <MotionConfig transition={{ duration: 1 }}>
+          <div className="overflow">
+            <LinkMotion style={{ display: "block" }} to="/" className="title" initial={{ y: "2.5rem" }} animate={{ y: 0 }}>
+              RDev
+            </LinkMotion>
+          </div>
+          <button onClick={() => setActive(!active)} className="overflow">
+            <motion.p className="toggle" animate={active ? "show" : "hide"} initial={"hide"} variants={{ show: { y: "0rem" }, hide: { y: "-2rem" } }}>
+              Close
+            </motion.p>
+            <motion.p
+              className="toggle"
+              animate={active ? "hide" : "show"}
+              initial={"hide"}
+              variants={{ show: { y: "-1.4rem" }, hide: { y: "1rem" } }}
+            >
+              Open
+            </motion.p>
+          </button>
+        </MotionConfig>
       </HeaderStyled>
       <AnimatePresence>
         {active && (
@@ -43,8 +42,8 @@ export function Header(props: HeaderProps) {
             <Container
               overlay
               initial={{ height: 0 }}
-              animate={{ height: "100%" }}
-              exit={{ height: "0", transition: { duration: 1.5 } }}
+              animate={{ height: "100%", background: ["#3C3B3D", "#B3B3B3"] }}
+              exit={{ height: "0", background: "#3C3B3D", transition: { duration: 1.5 } }}
               transition={{ duration: 0.8 }}
             />
             <Container overlay={false} transition={{ staggerChildren: 100 }}>

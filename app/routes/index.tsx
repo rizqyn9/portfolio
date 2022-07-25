@@ -19,12 +19,12 @@ export default function () {
         <KeepScroll />
         <HomeTitle />
       </Layout>
-      <div style={{ height: "100vh", width: "100vw", background: "white" }}>
+      {/* <div style={{ height: "100vh", width: "100vw", background: "white" }}>
         <Layout css={{ width: "100%", background: "transparent" }}>
           <HomeCarousel />
         </Layout>
       </div>
-      <Footer />
+      <Footer /> */}
     </>
   )
 }

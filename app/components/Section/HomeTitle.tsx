@@ -9,11 +9,12 @@ const Wrapper = styled(motion.section, {
   display: "flex",
   justifyContent: "center",
   flexDirection: "column",
+
   position: "fixed",
   top: 0,
   bottom: "0",
-  left: "3rem",
-  right: "3rem",
+  left: "5vw",
+  right: "5vw",
 
   fontSize: "13vw",
   mixBlendMode: "difference",
@@ -26,28 +27,16 @@ const H1Styled = styled(motion.h1, {
   // fontSize: "10em",
 })
 
-const Button = styled("button", {
-  appearance: "none",
-  bg: "white",
-  color: "black",
-  fontSize: ".5em",
-  width: "max-content",
-  py: ".1rem",
-  px: "3rem",
-  borderRadius: "9999px",
-})
-
 function HomeTitle() {
   const { scrollYProgress } = useScroll()
-  const x = useTransform(scrollYProgress, [0, 0.2], [0, 2_00])
-  const x2 = useTransform(scrollYProgress, [0, 0.3], [0, -2_00])
-  const y = useTransform(scrollYProgress, [0, 0.5], [0, 6_00])
+  // const x = useTransform(scrollYProgress, [0, 0.2], [0, 2_00])
+  // const x2 = useTransform(scrollYProgress, [0, 0.3], [0, -2_00])
   return (
     <>
-      <div style={{ height: "100vh" }}></div>
+      {/* <div style={{ height: "100vh" }}></div> */}
       <Wrapper style={{}}>
-        <H1Styled style={{ x }}>Creative</H1Styled>
-        <H1Styled style={{ x: x2 }} css={{ marginLeft: "auto" }}>
+        <H1Styled style={{}}>Creative</H1Styled>
+        <H1Styled style={{}} css={{ marginLeft: "auto" }}>
           Developer
         </H1Styled>
       </Wrapper>

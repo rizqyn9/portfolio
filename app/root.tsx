@@ -18,7 +18,7 @@ export const links: LinksFunction = () => [
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
   title: "Rizqy Prastya Ari Nugroho",
-  viewport: "width=device-width,initial-scale=1",
+  viewport: "width=device-width,user-scalable=no",
 })
 
 export default function App() {
@@ -52,7 +52,7 @@ function Document({ children, title }: { children: React.ReactNode; title?: stri
       </head>
       <body
         className="rdev-dark"
-        style={{ fontFamily: "Panchang-Regular", fontWeight: "bold", display: "flex", flexDirection: "column" }}
+        style={{ fontFamily: "Arial", fontSize: "1.2vw", fontWeight: "bold", display: "flex", flexDirection: "column" }}
         onMouseEnter={() => update("basic")}
       >
         <Cursor />

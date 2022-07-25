@@ -49,40 +49,33 @@ export const NavLinkStyle = styled(motion.div, {
 })
 
 export const HeaderStyled = styled(Layout, {
-  mx: "auto !important",
+  $$fontSize: "4em",
+  fontSize: "$$fontSize",
+  fontWeight: "lighter",
+
+  width: "100%",
+  py: "1em",
   bg: "transparent",
+
   display: "flex",
   justifyContent: "space-between",
   position: "fixed",
   zIndex: 13,
-  width: "100%",
-  py: "3rem",
-  // mixBlendMode: "difference",
-  fontWeight: "bolder",
+  mixBlendMode: "difference",
+
+  "@md": { $$fontSize: "2.5em" },
+  "@lg": { $$fontSize: "1.5em !important" },
 
   "& .overflow": {
-    overflow: "hidden",
-  },
-
-  "& .title": {},
-
-  "& .menu": {
-    overflow: "hidden",
     height: "2rem",
-    width: "4rem",
-  },
-
-  "& .container": {
+    width: "max-content",
     position: "relative",
-    height: "calc(100% * 2)",
+    overflow: "hidden",
+    lineHeight: "100%",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-between",
-    "& p": {
-      flex: "1 1 50%",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    },
+    alignItems: "flex-end",
   },
+
+  "& .toggle": {},
 })
