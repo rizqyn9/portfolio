@@ -1,5 +1,6 @@
 import { motion } from "framer-motion"
 import { styled } from "~/stitches.config"
+import { Layout } from "../Layout"
 
 export const Container = styled(motion.div, {
   position: "fixed",
@@ -47,13 +48,14 @@ export const NavLinkStyle = styled(motion.div, {
   },
 })
 
-export const HeaderStyled = styled("header", {
+export const HeaderStyled = styled(Layout, {
+  bg: "transparent",
   display: "flex",
   justifyContent: "space-between",
-  padding: "2rem 4rem",
   position: "fixed",
   zIndex: 13,
   width: "100%",
+  py: "3rem",
   // mixBlendMode: "difference",
   fontWeight: "bolder",
 

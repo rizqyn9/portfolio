@@ -1,67 +1,95 @@
 import React from "react"
-import { motion, type MotionValue } from "framer-motion"
+import { motion, useScroll, useTransform, type MotionValue } from "framer-motion"
 import { Header } from "~/components/Header"
 import { type CSS, styled } from "~/stitches.config"
 import { useCursorStore } from "~/components/Cursor"
-import { Carousel } from "~/components/Section/Carousel"
-import { Trailing } from "~/components/Atoms/Trailing"
+import { Layout } from "~/components/Layout"
+import { HomeTitle } from "~/components/Section"
+import { KeepScroll } from "~/components/KeepScroll"
 
 export default function () {
   const [active, setActive] = React.useState(false)
   const { update } = useCursorStore()
-  // const { scrollYProgress } = useScroll()
-  // const x = useTransform(scrollYProgress, [0, 1], [0, 200])
-  // const x2 = useTransform(scrollYProgress, [0, 1], [0, -500])
+  const { scrollYProgress } = useScroll()
+  const y = useTransform(scrollYProgress, [0, 0.5], [0, 8_00])
+
   return (
     <div onMouseEnter={() => update("basic")}>
       <Header active={active} setActive={setActive} />
-      <TitleContainer css={{ padding: "0 5vw", "@md": { padding: "0 20vw" } }}>
+      <Layout>
+        <HomeTitle />
+        <KeepScroll />
+      </Layout>
+      <Layout>
+        <HomeTitle />
+        <KeepScroll />
+      </Layout>
+
+      {/* <TitleContainer style={{ y }}>
         <TitleWord index={0} css={{ marginRight: "auto" }}>
-          Creative
+          Solve
         </TitleWord>
-        <TitleWord index={1} css={{ marginLeft: "auto" }}>
-          Developer
+        <TitleWord index={0.2} css={{ marginRight: "auto" }}>
+          Hard
         </TitleWord>
+        <TitleWord index={0.4} css={{ marginRight: "auto" }}>
+          Climate
+        </TitleWord>
+        <TitleWord index={0.6} css={{ marginRight: "auto" }}>
+          Problems
+        </TitleWord>
+        <motion.button initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+          Lets Talk
+        </motion.button>
       </TitleContainer>
-      <div style={{ height: "100vh", background: "var(--rdev-colors-body)" }}></div>
-      <div style={{ height: "100vh", display: "flex", position: "relative", zIndex: 8, mixBlendMode: "difference", background: "white" }}>
-        <Carousel />
-      </div>
-      <div style={{ height: "100vh", position: "relative", zIndex: 8, background: "black" }}>
-        <Trailing />
-        <div style={{ paddingLeft: "3rem", fontSize: "1.2em", maxWidth: "30rem" }}>
-          Rdev is a freelance and a full-stack developer based in Indonesia with a passion for building digital services/stuff he wants. He has a
-          knack for all things launching products, from planning and designing all the way to solving real-life problems with code. When not online,
-          he loves hanging out with his camera. Currently, he is living off of his own product called Callme.
-        </div>
-      </div>
-      <div style={{ height: "100vh", background: "blue" }}></div>
+      <div style={{ height: "100vh", background: "gray", zIndex: 8, position: "relative", padding: "3rem" }}>
+        <h1 style={{ fontSize: "2em" }}>
+          I{"'"}m here to ask the necessary (and sometimes difficult questions) to create brands and products that focus on and prioritize people
+        </h1>
+        <motion.button>GET TO KNOW ME</motion.button>
+      </div> */}
     </div>
   )
 }
 
 const TitleContainer = styled(motion.div, {
-  zIndex: 1,
-  position: "fixed",
-  top: 0,
-  left: 0,
-  bottom: 0,
-  right: 0,
+  height: "100vh",
+  minHeight: "max-content",
   pointerEvents: "none",
 
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
-  fontSize: "5em",
+  fontSize: "4.5em",
+
   "@sm": {
-    fontSize: "10em",
+    maxWidth: "50vw",
+    flexDirection: "row",
+    alignItems: "flex-end",
+    alignContent: "end",
+    justifyContent: "end",
+    flexWrap: "wrap",
   },
 
   willChange: "transform",
 
   "& .overflow": {
     overflow: "hidden",
+  },
+
+  "& button": {
+    fontSize: ".4em",
+    marginRight: "auto",
+    marginTop: "2em",
+    padding: "1rem 2rem",
+    background: "white",
+    color: "black",
+    borderRadius: "9999px",
+
+    "&::hover": {
+      boxShadow: "1rem 1rem 1rem green",
+    },
   },
 })
 
@@ -78,7 +106,7 @@ const TitleWord = ({ children, css, index, x }: { children: React.ReactNode; css
     >
       <div className="overflow">
         <motion.p
-          style={{ color: "white", overflow: "visible", zIndex: 0, fontWeight: "bolder", transformStyle: "preserve-3d" }}
+          style={{ color: "white", overflow: "visible", zIndex: 0, fontWeight: "bolder", transformStyle: "preserve-3d", lineHeight: ".9em" }}
           initial={{ y: "2em" }}
           animate={{ y: 0 }}
           transition={{

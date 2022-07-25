@@ -897,6 +897,14 @@
   dependencies:
     "@types/ms" "*"
 
+"@types/eslint@^8.4.5":
+  version "8.4.5"
+  resolved "https://registry.yarnpkg.com/@types/eslint/-/eslint-8.4.5.tgz#acdfb7dd36b91cc5d812d7c093811a8f3d9b31e4"
+  integrity sha512-dhsC09y1gpJWnK+Ff4SGvCuSnk9DaU0BJZSzOwa6GVSg65XtTugLBITDAAzRU5duGBoXBHpdR/9jHGxJjNflJQ==
+  dependencies:
+    "@types/estree" "*"
+    "@types/json-schema" "*"
+
 "@types/estree-jsx@^0.0.1":
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/@types/estree-jsx/-/estree-jsx-0.0.1.tgz#c36d7a1afeb47a95a8ee0b7bc8bc705db38f919d"
@@ -934,7 +942,7 @@
   resolved "https://registry.yarnpkg.com/@types/json-buffer/-/json-buffer-3.0.0.tgz#85c1ff0f0948fc159810d4b5be35bf8c20875f64"
   integrity sha512-3YP80IxxFJB4b5tYC2SUPwkg0XQLiu0nWvhRgEatgjf+29IcWO9X1k8xRv5DGssJ/lCrjYTjQPcobJr2yWIVuQ==
 
-"@types/json-schema@^7.0.9":
+"@types/json-schema@*", "@types/json-schema@^7.0.9":
   version "7.0.11"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.11.tgz#d421b6c527a3037f7c84433fd2c4229e016863d3"
   integrity sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==
@@ -2312,6 +2320,11 @@ escape-string-regexp@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-4.0.0.tgz#14ba83a5d373e3d311e5afca29cf5bfad965bf34"
   integrity sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==
+
+eslint-config-prettier@^8.5.0:
+  version "8.5.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-8.5.0.tgz#5a81680ec934beca02c7b1a61cf8ca34b66feab1"
+  integrity sha512-obmWKLUNCnhtQRKc+tmnYuQl0pFU1ibYJQ5BGhTVB08bHe9wC8qUeG7c08dj9XX+AuPj1YSGSQIHl1pnDHZR0Q==
 
 eslint-import-resolver-node@0.3.6, eslint-import-resolver-node@^0.3.6:
   version "0.3.6"

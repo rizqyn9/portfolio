@@ -1,8 +1,6 @@
-import React from "react"
-import { type HeaderProps, Header } from "../Header"
 import { styled } from "~/stitches.config"
 
-const Wrapper = styled("main", {
+const Layout = styled("main", {
   background: "var(--rdev-colors-body)",
   transition: "0.5s",
 
@@ -20,24 +18,34 @@ const Wrapper = styled("main", {
     outline: "2px solid var(--rdev-colors-brand)",
     backgroundColor: "var(--rdev-colors-foreground)",
   },
+
+  boxSizing: "border-box",
+  flexShrink: 0,
+
+  // Custom
+  ml: "auto",
+  mr: "auto",
+  px: "$5",
+
+  variants: {
+    size: {
+      "1": {
+        maxWidth: "430px",
+      },
+      "2": {
+        maxWidth: "715px",
+      },
+      "3": {
+        maxWidth: "1145px",
+      },
+      "4": {
+        maxWidth: "none",
+      },
+    },
+  },
+  defaultVariants: {
+    size: "4",
+  },
 })
-
-interface LayoutProps {
-  footer?: boolean
-  header?: boolean
-  headerProps?: HeaderProps
-}
-
-const Layout: React.FC<LayoutProps> = (props) => {
-  const { children, header, footer, headerProps } = props
-
-  return (
-    <Wrapper>
-      {header ? <Header {...headerProps} /> : null}
-      {children}
-      {/* {footer ? <Footer /> : null} */}
-    </Wrapper>
-  )
-}
 
 export { Layout }
