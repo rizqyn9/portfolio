@@ -30,7 +30,7 @@ function KeepScroll() {
   return (
     <Container>
       <SVGMotion
-        initial={{ opacity: 1 }}
+        initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         style={{ rotate }}
         transition={{ duration: 1 }}
