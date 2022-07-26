@@ -18,7 +18,7 @@ const outerVariant: CursorVariant = {
     opacity: 1,
   },
   focus: {
-    border: "1px solid black",
+    border: "1px solid white",
     background: "white",
     opacity: 0.7,
     scale: 2,
@@ -47,8 +47,8 @@ export function Cursor() {
     <AnimatePresence>
       {active && (
         <Container animate={{ x, y, opacity: 1 }} style={{ mixBlendMode }} initial={{ opacity: 0 }}>
-          <motion.div className="outer" initial={"basic"} animate={control} variants={outerVariant}>
-            {state == "focus" && "focus"}
+          <motion.div style={{ fontSize: "1em" }} className="outer" initial={"basic"} animate={control} variants={outerVariant}>
+            {state == "focus" && "Home"}
           </motion.div>
         </Container>
       )}

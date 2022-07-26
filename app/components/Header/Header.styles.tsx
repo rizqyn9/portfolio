@@ -45,6 +45,9 @@ export const NavLinkStyle = styled(motion.div, {
   "& > .overflow": {
     overflow: "hidden",
     height: "auto",
+    position: "relative",
+    zIndex: 100,
+    mixBlendMode: "difference",
   },
 })
 

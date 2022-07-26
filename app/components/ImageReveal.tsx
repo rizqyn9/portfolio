@@ -2,9 +2,9 @@ import { type CSS, styled } from "~/stitches.config"
 import { motion } from "framer-motion"
 
 const ContainerStyled = styled(motion.div, {
-  overflow: "hidden",
+  // overflow: "hidden",
   height: "max-content",
-  borderBottom: "3px solid red",
+  // position: "absolute",
 })
 
 const ImgStyled = styled(motion.img, {})
@@ -23,12 +23,18 @@ function ImageReveal(props: ImageRevealProps) {
       whileInView="view"
       initial="hide"
       variants={{
-        view: { opacity: 1, height: "max-content", transition: { duration: Math.random() * 6, type: "spring" } },
-        hide: { opacity: 0, height: "0px", transition: { duration: 0 } },
+        view: { opacity: 1, transition: { duration: Math.random() * 6, type: "spring" } },
+        hide: { opacity: 0, transition: { duration: 0 } },
       }}
-      transition={{ duration: 1 }}
     >
-      <ImgStyled src={src} />
+      <ImgStyled
+        src={src}
+        variants={{
+          hide: { skewX: "10deg", scale: 0.3, transition: { duration: 0 } },
+          view: { skewX: "0deg", scale: 1 },
+        }}
+        transition={{ duration: 1 }}
+      />
     </ContainerStyled>
   )
 }

@@ -5,13 +5,14 @@ import { Layout } from "~/components/Layout"
 import { HomeTitle } from "~/components/Section"
 import { KeepScroll } from "~/components/KeepScroll"
 import { HomeCarousel } from "~/components/Section/HomeCarousel"
-import { Footer } from "~/components/Layout/Footer"
+import { HomeAbout } from "~/components/Section/HomeAbout"
+import { HomeFooter } from "~/components/Section/HomeFooter"
+import { HomeProject } from "~/components/Section/HomeProject"
 
 export default function () {
   const [active, setActive] = React.useState(false)
   const { scrollYProgress } = useScroll()
   // const background = useTransform(scrollYProgress, [0, 1], ["#3C3B3D", "#ffff"])
-  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1])
 
   return (
     <>
@@ -20,14 +21,17 @@ export default function () {
         <KeepScroll />
         <HomeTitle />
       </Layout>
-      <motion.div style={{ height: "100vh", width: "100vw", overflow: "hidden", background: "white", opacity }}>
+      <motion.div
+        style={{ height: "100vh", width: "100vw", overflow: "hidden", background: "white" }}
+        variants={{ show: { opacity: 1, transition: { duration: 2 } }, hide: { opacity: 0, transition: { duration: 0 } } }}
+        initial="hide"
+        whileInView="show"
+      >
         <HomeCarousel />
       </motion.div>
-      {/* <div style={{ height: "100vh", width: "100vw", background: "white" }}>
-        <Layout css={{ width: "100%", background: "transparent" }}>
-        </Layout>
-      </div>
-      <Footer /> */}
+      <HomeAbout />
+      <HomeProject />
+      <HomeFooter />
     </>
   )
 }

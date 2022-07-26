@@ -7,6 +7,7 @@ import { NotFound } from "./components/Layout/404"
 import { Cursor } from "~/components/Cursor"
 import { linksFont } from "./lib/fonts"
 import { useCursorStore } from "~/components/Cursor"
+import { motion } from "framer-motion"
 
 export const links: LinksFunction = () => [
   { href: normalizeCSS, rel: "stylesheet" },
@@ -50,8 +51,11 @@ function Document({ children, title }: { children: React.ReactNode; title?: stri
         <Meta />
         <Links />
       </head>
-      <body
+      <motion.body
         className="rdev-dark"
+        // initial={{ background: "#fff" }}
+        // animate={{ background: "#000000" }}
+        // transition={{ duration: 1 }}
         style={{ fontFamily: "Arial", fontSize: "1.2vw", fontWeight: "bold", display: "flex", flexDirection: "column" }}
         onMouseEnter={() => update("basic")}
       >
@@ -60,7 +64,7 @@ function Document({ children, title }: { children: React.ReactNode; title?: stri
         <ScrollRestoration />
         <Scripts />
         {process.env.NODE_ENV === "development" && <LiveReload />}
-      </body>
+      </motion.body>
     </html>
   )
 }

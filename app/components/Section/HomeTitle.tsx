@@ -29,16 +29,14 @@ const H1Styled = styled(motion.h1, {
 
 function HomeTitle() {
   const { scrollYProgress } = useScroll()
-  // const x = useTransform(scrollYProgress, [0, 0.2], [0, 2_00])
-  // const x2 = useTransform(scrollYProgress, [0, 0.3], [0, -2_00])
+  const x = useTransform(scrollYProgress, [0, 0.2], ["0vw", "30vw"])
+  const x2 = useTransform(scrollYProgress, [0, 0.3], ["0vw", "-20vw"])
   return (
     <>
-      <div style={{ height: "100vh" }}></div>
+      <div style={{ height: "100vh", background: "transparent" }}></div>
       <Wrapper style={{}}>
-        <H1Styled style={{}}>Creative</H1Styled>
-        <H1Styled style={{}} css={{ marginLeft: "auto" }}>
-          Developer
-        </H1Styled>
+        <H1Styled style={{ marginRight: "auto", x }}>Creative</H1Styled>
+        <H1Styled style={{ marginLeft: "auto", x: x2 }}>Developer</H1Styled>
       </Wrapper>
     </>
   )

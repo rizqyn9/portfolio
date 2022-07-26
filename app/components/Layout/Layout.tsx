@@ -1,7 +1,8 @@
 import { styled } from "~/stitches.config"
 
 const Layout = styled("main", {
-  background: "var(--rdev-colors-body)",
+  width: "100%",
+  // background: "var(--rdev-colors-body)",
   transition: "0.5s",
 
   /**
