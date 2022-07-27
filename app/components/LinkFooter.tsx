@@ -10,7 +10,8 @@ export function LinkFooter(props: LinkFooterProps) {
   const { update } = useCursorStore()
   let { to } = props
   to = to == "home" ? "/" : to
-  const active = useLocation().pathname.includes(to)
+  let active = useLocation().pathname.includes(to)
+
   return (
     <li onMouseEnter={() => update("focus")} onMouseLeave={() => update("basic")}>
       <LinkStyled to={to} active={active}>

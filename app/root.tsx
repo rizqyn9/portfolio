@@ -8,6 +8,10 @@ import { Cursor } from "~/components/Cursor"
 import { linksFont } from "./lib/fonts"
 import { useCursorStore } from "~/components/Cursor"
 import { motion } from "framer-motion"
+import { Toast } from "~/components/TemporayToast"
+import { HomeFooter } from "~/components/Section/HomeFooter"
+import { Header } from "~/components/Header"
+import React from "react"
 
 export const links: LinksFunction = () => [
   { href: normalizeCSS, rel: "stylesheet" },
@@ -41,6 +45,7 @@ export function CatchBoundary() {
 
 function Document({ children, title }: { children: React.ReactNode; title?: string }) {
   const { update } = useCursorStore()
+  const [active, setActive] = React.useState(false)
 
   return (
     <html lang="en">
@@ -53,9 +58,6 @@ function Document({ children, title }: { children: React.ReactNode; title?: stri
       </head>
       <motion.body
         className="rdev-dark"
-        // initial={{ background: "#fff" }}
-        // animate={{ background: "#000000" }}
-        // transition={{ duration: 1 }}
         style={{
           fontFamily: "Arial",
           fontSize: "1.2vw",
@@ -67,8 +69,20 @@ function Document({ children, title }: { children: React.ReactNode; title?: stri
         }}
         onMouseEnter={() => update("basic")}
       >
+        <Toast />
+        <Header active={active} setActive={setActive} />
+
         <Cursor />
         {children}
+        <HomeFooter />
+        <div style={{ background: "white", color: "black", position: "relative", zIndex: 10 }}>
+          <p style={{ fontSize: "16px", textAlign: "center", padding: "10px " }}>
+            Built with{" "}
+            <a href="https://remix.run/" target="__blank" onMouseEnter={() => update("focus")} onMouseLeave={() => update("basic")}>
+              Remix ❤️
+            </a>
+          </p>
+        </div>
         <ScrollRestoration />
         <Scripts />
         {process.env.NODE_ENV === "development" && <LiveReload />}

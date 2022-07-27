@@ -71,6 +71,7 @@ const StyledContainer = styled(motion.div, {
 
 export function HomeFooter() {
   const { update } = useCursorStore()
+
   return (
     <StyledContainer>
       {/* Idea */}
@@ -92,10 +93,15 @@ export function HomeFooter() {
 
       {/* Icon */}
       <div className="icon_container">
-        <Telegram onMouseEnter={() => update("focus")} onMouseLeave={() => update("basic")} />
-        <Instagram onMouseEnter={() => update("focus")} onMouseLeave={() => update("basic")} />
-        <Github onMouseEnter={() => update("focus")} onMouseLeave={() => update("basic")} />
-        <Linkedin onMouseEnter={() => update("focus")} onMouseLeave={() => update("basic")} />
+        <LinkIcon href="https://t.me/rizqynugroho9" target="_blank">
+          <Telegram onMouseEnter={() => update("focus")} onMouseLeave={() => update("basic")} />
+        </LinkIcon>
+        <LinkIcon href="https://github.com/rizqyn9" target="_blank">
+          <Github onMouseEnter={() => update("focus")} onMouseLeave={() => update("basic")} />
+        </LinkIcon>
+        <LinkIcon href="https://www.linkedin.com/in/rizqynugroho9/" target="_blank">
+          <Linkedin onMouseEnter={() => update("focus")} onMouseLeave={() => update("basic")} />
+        </LinkIcon>
       </div>
 
       {/* Copyright */}
@@ -112,3 +118,5 @@ export function HomeFooter() {
     </StyledContainer>
   )
 }
+
+const LinkIcon = styled("a")

@@ -44,6 +44,7 @@ export function Header(props: HeaderProps) {
             zIndex: 20,
             fontSize: "22px",
             mixBlendMode: "difference",
+            textTransform: "lowercase",
           }}
           animate={active ? "close" : "open"}
           initial="initial"
