@@ -1,6 +1,8 @@
 import { Link } from "@remix-run/react"
-import { AnimatePresence, motion, MotionConfig, useTransform } from "framer-motion"
+import { AnimatePresence, motion, MotionConfig } from "framer-motion"
+import React from "react"
 import { Container, NavLinkStyle, HeaderStyled } from "."
+import { Box } from "../Atoms/Box"
 import { useCursorStore } from "../Cursor"
 
 type HeaderProps = {
@@ -9,28 +11,31 @@ type HeaderProps = {
 }
 
 const LinkMotion = motion(Link)
+const BoxMotion = motion(Box)
 
 export function Header(props: HeaderProps) {
   const { active, setActive } = props
+
   return (
     <>
-      <HeaderStyled>
-        <MotionConfig transition={{ duration: 1 }}>
-          <div className="overflow">
-            <LinkMotion style={{ display: "block" }} to="/" className="title" initial={{ y: "2.5rem" }} animate={{ y: 0 }}>
-              RDev
-            </LinkMotion>
-          </div>
-          <button onClick={() => setActive(!active)} className="overflow">
-            <motion.p className="toggle" animate={active ? "show" : "hide"} initial={"hide"} variants={{ show: { y: "0rem" }, hide: { y: "-2rem" } }}>
-              Close
-            </motion.p>
-            <motion.p className="toggle" animate={active ? "hide" : "show"} initial={"hide"} variants={{ show: { y: "-2rem" }, hide: { y: "1rem" } }}>
-              Open
-            </motion.p>
-          </button>
-        </MotionConfig>
-      </HeaderStyled>
+      {/* <HeaderStyled> */}
+      <MotionConfig transition={{ duration: 1, ease: "easeInOut" }}>
+        <BoxMotion css={{ overflow: "hidden", position: "fixed", top: "1em", left: "5vw", zIndex: 20, fontSize: "22px" }}>
+          <BoxMotion initial={{ y: "1.5em" }} animate={{ y: "0em" }}>
+            Rdev
+          </BoxMotion>
+        </BoxMotion>
+        <BoxMotion
+          onClick={() => setActive(!active)}
+          css={{ overflow: "hidden", maxHeight: "1.5em", position: "fixed", top: "1em", right: "5vw", zIndex: 20, fontSize: "22px" }}
+          animate={active ? "close" : "open"}
+          initial="initial"
+        >
+          <BoxMotion variants={{ initial: { y: "2.5em" }, close: { y: "-1.5em" }, open: { y: "0em" } }}>Menu</BoxMotion>
+          <BoxMotion variants={{ close: { y: "-1.5em" }, open: { y: "0em" } }}>Back</BoxMotion>
+        </BoxMotion>
+      </MotionConfig>
+      {/* </HeaderStyled> */}
       <AnimatePresence>
         {active && (
           <>

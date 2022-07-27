@@ -24,19 +24,20 @@ const Wrapper = styled(motion.section, {
 })
 
 const H1Styled = styled(motion.h1, {
-  // fontSize: "10em",
+  fontSize: "clamp(45px, 13vw, 140px)",
 })
 
 function HomeTitle() {
   const { scrollYProgress } = useScroll()
   const x = useTransform(scrollYProgress, [0, 0.2], ["0vw", "30vw"])
-  const x2 = useTransform(scrollYProgress, [0, 0.3], ["0vw", "-20vw"])
+  const x2 = useTransform(scrollYProgress, [0, 0.3], ["0vw", "-27vw"])
+  const y = useTransform(scrollYProgress, [0, 0.1, 0.3], ["0vh", "-30vh", "0vh"])
   return (
     <>
       <div style={{ height: "100vh", background: "transparent" }}></div>
       <Wrapper style={{}}>
-        <H1Styled style={{ marginRight: "auto", x }}>Creative</H1Styled>
-        <H1Styled style={{ marginLeft: "auto", x: x2 }}>Developer</H1Styled>
+        <H1Styled style={{ marginRight: "auto", x, y }}>Creative</H1Styled>
+        <H1Styled style={{ marginLeft: "auto", x: x2, y }}>Developer</H1Styled>
       </Wrapper>
     </>
   )

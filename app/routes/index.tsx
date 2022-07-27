@@ -17,7 +17,7 @@ export default function () {
 
   return (
     <>
-      <Toast />
+      {/* <Toast /> */}
       <Header active={active} setActive={setActive} />
       <Layout>
         <KeepScroll />

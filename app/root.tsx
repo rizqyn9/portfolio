@@ -56,7 +56,15 @@ function Document({ children, title }: { children: React.ReactNode; title?: stri
         // initial={{ background: "#fff" }}
         // animate={{ background: "#000000" }}
         // transition={{ duration: 1 }}
-        style={{ fontFamily: "Arial", fontSize: "1.2vw", fontWeight: "bold", display: "flex", flexDirection: "column" }}
+        style={{
+          fontFamily: "Arial",
+          fontSize: "1.2vw",
+          fontWeight: "bold",
+          display: "flex",
+          flexDirection: "column",
+          maxWidth: "100vw",
+          overflowX: "hidden",
+        }}
         onMouseEnter={() => update("basic")}
       >
         <Cursor />
