@@ -44,27 +44,36 @@ const ContainerStyled = styled(motion.div, {
   },
 })
 
+const BoxMotion = motion(Box)
 export function HomeAbout() {
   return (
     <ContainerStyled>
-      <Box className="container solve">
+      <BoxMotion
+        className="container solve"
+        initial={{ color: "#0000" }}
+        whileInView={{ color: "#ffff" }}
+        transition={{ duration: 1 }}
+        viewport={{ margin: "-35px" }}
+      >
         <h1>Solve Hard</h1>
         <h1>Problems</h1>
         <h1>Climate</h1>
-      </Box>
-      <Box className="container motivated">
-        <div>
-          <p>
-            Motivated <span className="small">to</span>
-          </p>
-
-          <p className="small">learn new technologies</p>
-        </div>
-        <hr />
-        <LinkUnderlined arrow css={{ width: "max-content", gap: "1rem", py: "2rem", fontSize: "1em" }}>
+      </BoxMotion>
+      <BoxMotion
+        className="container motivated"
+        initial={{ color: "#0000" }}
+        whileInView={{ color: "#ffff" }}
+        transition={{ duration: 1 }}
+        viewport={{ margin: "-25px" }}
+      >
+        <p>
+          Motivated <span className="small">to</span>
+        </p>
+        <p className="small">learn new technologies</p>
+        <LinkUnderlined to="/" arrow css={{ width: "max-content", gap: "1rem", py: "2rem", fontSize: "1em" }}>
           Get to know me
         </LinkUnderlined>
-      </Box>
+      </BoxMotion>
     </ContainerStyled>
   )
 }

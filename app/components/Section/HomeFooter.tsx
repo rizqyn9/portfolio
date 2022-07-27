@@ -3,6 +3,7 @@ import { motion } from "framer-motion"
 import { LinkFooter } from "../LinkFooter"
 import { Instagram, Telegram, Github, Linkedin } from "../Icon"
 import { LinkUnderlined } from "../Links"
+import { useCursorStore } from "~/components/Cursor"
 
 const StyledContainer = styled(motion.div, {
   width: "100%",
@@ -47,7 +48,7 @@ const StyledContainer = styled(motion.div, {
     width: "100%",
     display: "flex",
     justifyContent: "center",
-    gap: ".5rem",
+    gap: "2rem",
     order: 4,
   },
 
@@ -69,12 +70,13 @@ const StyledContainer = styled(motion.div, {
 })
 
 export function HomeFooter() {
+  const { update } = useCursorStore()
   return (
     <StyledContainer>
       {/* Idea */}
       <div className="idea_container">
         <h2>Have an idea ?</h2>
-        <LinkUnderlined arrow css={{ width: "max-content", gap: "1rem", py: "1rem", textTransform: "uppercase" }}>
+        <LinkUnderlined to="/" arrow css={{ width: "max-content", gap: "1rem", py: "1rem", textTransform: "uppercase" }}>
           Get in touch
         </LinkUnderlined>
       </div>
@@ -90,10 +92,10 @@ export function HomeFooter() {
 
       {/* Icon */}
       <div className="icon_container">
-        <Telegram />
-        <Instagram />
-        <Github />
-        <Linkedin />
+        <Telegram onMouseEnter={() => update("focus")} onMouseLeave={() => update("basic")} />
+        <Instagram onMouseEnter={() => update("focus")} onMouseLeave={() => update("basic")} />
+        <Github onMouseEnter={() => update("focus")} onMouseLeave={() => update("basic")} />
+        <Linkedin onMouseEnter={() => update("focus")} onMouseLeave={() => update("basic")} />
       </div>
 
       {/* Copyright */}
@@ -103,7 +105,7 @@ export function HomeFooter() {
 
       {/* Address */}
       <div className="address_container">
-        <p>Indonesia - Jawa Tengah - Kudus 59327</p>
+        <p>Indonesia - Central Java - Kudus 59327</p>
         <p>rizqynugroho9@gmail.com</p>
         <p>+62 898 566 5498</p>
       </div>

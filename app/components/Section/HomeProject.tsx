@@ -1,12 +1,12 @@
 import { styled } from "~/stitches.config"
 import { motion } from "framer-motion"
 import { LinkUnderlined } from "../Links"
-import { ProjectPreview, ProjectPreviewContainer } from "../ProjectPreview"
+import { ProjectPreviewContainer } from "../ProjectPreview"
 
 const StyledContainer = styled(motion.div, {
+  minHeight: "100vh",
   bg: "white",
   width: "100%",
-  py: "10vh",
   px: "5vw",
 
   position: "relative",
@@ -16,12 +16,14 @@ const StyledContainer = styled(motion.div, {
 
   display: "flex",
   //   flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
   flexWrap: "wrap",
   fontSize: "24px",
 
   "& .title": {
     width: "100%",
-    fontSize: "13vw",
+    fontSize: "clamp(20px, 10vw, 120px)",
 
     display: "flex",
     flexDirection: "column",
@@ -84,7 +86,9 @@ export function HomeProject() {
 
       {/* Link Button Project */}
       <div className="more">
-        <LinkUnderlined css={{ fontSize: "inherit" }}>SEE - ALL</LinkUnderlined>
+        <LinkUnderlined to="/" css={{ fontSize: "inherit" }}>
+          SEE - ALL
+        </LinkUnderlined>
       </div>
 
       {/* Accordion */}

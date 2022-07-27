@@ -1,16 +1,18 @@
 import { Link, useLocation } from "@remix-run/react"
 import { styled } from "~/stitches.config"
+import { useCursorStore } from "~/components/Cursor"
 
 type LinkFooterProps = {
   to: string
 }
 
 export function LinkFooter(props: LinkFooterProps) {
+  const { update } = useCursorStore()
   let { to } = props
   to = to == "home" ? "/" : to
   const active = useLocation().pathname.includes(to)
   return (
-    <li>
+    <li onMouseEnter={() => update("focus")} onMouseLeave={() => update("basic")}>
       <LinkStyled to={to} active={active}>
         {props.to}
       </LinkStyled>

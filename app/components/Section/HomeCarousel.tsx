@@ -29,7 +29,7 @@ function HomeCarousel() {
       }}
       transition={{ duration: 1 }}
       whileInView="show"
-      viewport={{ margin: "-250px" }}
+      viewport={{ margin: "-10px" }}
     >
       <ImageReveal src="/img/1.png" css={{ width: "22%" }} />
       <ImageReveal src="/img/1.png" css={{ width: "29%", mr: "1%", ml: "auto", mt: "20%" }} />

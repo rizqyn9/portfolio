@@ -2,6 +2,7 @@ import { styled } from "~/stitches.config"
 import { motion, useAnimationControls, type Variant } from "framer-motion"
 import { Box } from "./Atoms/Box"
 import { PReveal } from "./Motion/Reveal"
+import { useCursorStore } from "~/components/Cursor"
 
 const PreviewContainer = styled(motion.div, {
   overflow: "visible",
@@ -37,16 +38,24 @@ type ProjectPreviewProps = {
 export function ProjectPreview(props: ProjectPreviewProps) {
   const { img, title, subtitle, active, blur } = props
 
+  const { update } = useCursorStore()
   const control = useAnimationControls()
 
   return (
-    <PreviewContainer initial="blur" animate={control} transition={{ duration: 1 }}>
-      <Box
-        as={motion.div}
-        onMouseEnter={() => control.start("active")}
-        onMouseLeave={() => control.start("blur")}
-        css={{ display: "flex", fontWeight: "normal", gap: ".5rem", alignItems: "flex-start", justifyContent: "flex-start" }}
-      >
+    <PreviewContainer
+      initial="blur"
+      animate={control}
+      transition={{ duration: 1 }}
+      onMouseEnter={() => {
+        control.start("active")
+        update("focus")
+      }}
+      onMouseLeave={() => {
+        update("basic")
+        control.start("blur")
+      }}
+    >
+      <Box as={motion.div} css={{ display: "flex", fontWeight: "normal", gap: ".5rem", alignItems: "flex-start", justifyContent: "flex-start" }}>
         <h2 style={{ textTransform: "uppercase" }}>{title}</h2>
         <PReveal
           css={{
@@ -73,7 +82,7 @@ export function ProjectPreview(props: ProjectPreviewProps) {
       {/* Preview */}
       <BoxMotion
         className="image-preview"
-        style={{ pointerEvents: "none", overflow: "hidden", maxHeight: "100%" }}
+        style={{ pointerEvents: "none", overflow: "visible", maxHeight: "100%" }}
         css={{ bg: "Green", position: "absolute", top: 0, left: 0, width: "45%" }}
         variants={{
           active: { opacity: 1, ...active },
@@ -118,23 +127,23 @@ export function ProjectPreviewContainer() {
 
       <ProjectPreview
         img="/img/1.png"
-        title="Poject 1"
-        subtitle="Front end"
+        title="LingoTalk"
+        subtitle="Project Manager"
         active={{ rotateZ: "5deg", translateY: "0", scale: 1.1 }}
         blur={{ rotateZ: "-2deg", translateY: "1rem", scale: 0.8, transition: { duration: 0.4 } }}
       />
       <motion.hr variants={{ initial: { width: "0%" }, show: { width: "100%" } }} transition={{ duration: 1 }} />
       <ProjectPreview
         img="/img/2.png"
-        title="Poject 1"
-        subtitle="Front end"
+        title="CariGuru"
+        subtitle="Web Leader"
         active={{ rotateX: "-5deg", translateY: "0rem", skewX: "10deg", scale: 1.1 }}
         blur={{ rotateX: "10deg", translateY: "2rem", skewX: "0deg", scale: 0.8, transition: { duration: 0.4 } }}
       />
       <motion.hr variants={{ initial: { width: "0%" }, show: { width: "100%" } }} transition={{ duration: 1 }} />
       <ProjectPreview
         img="/img/3.png"
-        title="Poject 1"
+        title="Blups.asia"
         subtitle="Front end"
         active={{ rotateZ: "4deg", translateY: "0rem", scale: 1.1 }}
         blur={{ rotateZ: "-2deg", translateY: "2rem", scale: 0.8, transition: { duration: 0.4 } }}

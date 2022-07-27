@@ -14,19 +14,26 @@ const LinkMotion = motion(Link)
 const BoxMotion = motion(Box)
 
 export function Header(props: HeaderProps) {
+  const { update } = useCursorStore()
   const { active, setActive } = props
 
   return (
     <>
       {/* <HeaderStyled> */}
       <MotionConfig transition={{ duration: 1, ease: "easeInOut" }}>
-        <BoxMotion css={{ overflow: "hidden", position: "fixed", top: "1em", left: "5vw", zIndex: 20, fontSize: "22px", mixBlendMode: "difference" }}>
+        <BoxMotion
+          onMouseEnter={() => update("focus")}
+          onMouseLeave={() => update("basic")}
+          css={{ overflow: "hidden", position: "fixed", top: "1em", left: "5vw", zIndex: 20, fontSize: "22px", mixBlendMode: "difference" }}
+        >
           <BoxMotion initial={{ y: "1.5em" }} animate={{ y: "0em" }}>
             Rdev
           </BoxMotion>
         </BoxMotion>
         <BoxMotion
           onClick={() => setActive(!active)}
+          onMouseEnter={() => update("focus")}
+          onMouseLeave={() => update("basic")}
           css={{
             overflow: "hidden",
             maxHeight: "1.5em",

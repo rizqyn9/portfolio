@@ -1,7 +1,8 @@
-import { type CSS, styled } from "~/stitches.config"
+import { styled, ComponentProps } from "~/stitches.config"
 import { Link } from "@remix-run/react"
 import { Arrow } from "./Icon"
 import { useCursorStore } from "./Cursor"
+import { motion } from "framer-motion"
 
 const LinkStyled = styled(Link, {
   fontSize: ".7em",
@@ -37,19 +38,19 @@ const LinkStyled = styled(Link, {
   },
 })
 
+const LinkMotion = motion(LinkStyled)
+
 type LinkUnderlinedProps = {
-  to?: string
-  children: React.ReactNode
   arrow?: boolean
-  css?: CSS
-}
+} & ComponentProps<typeof LinkMotion>
 
 export function LinkUnderlined(props: LinkUnderlinedProps) {
   const { update } = useCursorStore()
+  const { arrow, children, to = "/", ...rest } = props
   return (
-    <LinkStyled to={props.to || "/"} css={{ ...props.css }} onMouseEnter={() => update("focus")} onMouseLeave={() => update("basic")}>
-      <p>{props.children}</p>
-      {props.arrow && <Arrow />}
-    </LinkStyled>
+    <LinkMotion to={to} onMouseEnter={() => update("focus")} onMouseLeave={() => update("basic")} {...rest}>
+      <p>{children}</p>
+      {arrow && <Arrow />}
+    </LinkMotion>
   )
 }
