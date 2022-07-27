@@ -1,12 +1,16 @@
 import { type CSS, styled } from "~/stitches.config"
 import { Link } from "@remix-run/react"
 import { Arrow } from "./Icon"
+import { useCursorStore } from "./Cursor"
 
 const LinkStyled = styled(Link, {
   fontSize: ".7em",
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
+  position: "relative",
+  mixBlendMode: "difference",
+  zIndex: 100,
 
   "& p": {
     position: "relative",
@@ -41,8 +45,9 @@ type LinkUnderlinedProps = {
 }
 
 export function LinkUnderlined(props: LinkUnderlinedProps) {
+  const { update } = useCursorStore()
   return (
-    <LinkStyled to={props.to || "/"} css={{ ...props.css }}>
+    <LinkStyled to={props.to || "/"} css={{ ...props.css }} onMouseEnter={() => update("focus")} onMouseLeave={() => update("basic")}>
       <p>{props.children}</p>
       {props.arrow && <Arrow />}
     </LinkStyled>

@@ -30,6 +30,7 @@ export function Header(props: HeaderProps) {
           css={{
             overflow: "hidden",
             maxHeight: "1.5em",
+            lineHeight: "1.5em",
             position: "fixed",
             top: "1em",
             right: "5vw",

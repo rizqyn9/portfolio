@@ -10,8 +10,8 @@ export const Container = styled(motion.div, {
   left: 0,
   bottom: 0,
   right: 0,
-  zIndex: "100",
-  // mixBlendMode: "difference",
+  zIndex: 30,
+  mixBlendMode: "difference",
 
   display: "none",
 

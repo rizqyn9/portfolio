@@ -18,21 +18,14 @@ export default function () {
   return (
     <>
       {/* <Toast /> */}
-      <Header active={active} setActive={setActive} />
+      {/* <Header active={active} setActive={setActive} />
       <Layout>
         <KeepScroll />
         <HomeTitle />
       </Layout>
-      <motion.div
-        style={{ height: "100vh", width: "100vw", overflow: "hidden", background: "white" }}
-        variants={{ show: { opacity: 1, transition: { duration: 2 } }, hide: { opacity: 0, transition: { duration: 0 } } }}
-        initial="hide"
-        whileInView="show"
-      >
-        <HomeCarousel />
-      </motion.div>
+      <HomeCarousel /> */}
       <HomeAbout />
-      <HomeProject />
+      {/* <HomeProject />
       <HomeFooter />
       <div style={{ background: "white", color: "black", position: "relative", zIndex: 10 }}>
         <p style={{ fontSize: "3em", textAlign: "center", padding: "2rem " }}>
@@ -41,7 +34,7 @@ export default function () {
             Remix ❤️
           </a>
         </p>
-      </div>
+      </div> */}
     </>
   )
 }

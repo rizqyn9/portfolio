@@ -1,22 +1,36 @@
 import { styled } from "~/stitches.config"
-import { motion, useInView } from "framer-motion"
+import { motion } from "framer-motion"
 import React from "react"
 import { ImageReveal } from "../ImageReveal"
 
-const ContainerCarousel = styled("div", {
+const ContainerCarousel = styled(motion.div, {
+  minHeight: "100vh",
+  maxWidth: "100%",
+  width: "100%",
+  bg: "white",
+
+  position: "relative",
+
   display: "flex",
   alignItems: "flex-start",
   justifyContent: "space-between",
-  height: "100vh",
   py: "20vh",
   px: "5vw",
-  maxWidth: "100%",
   flexWrap: "wrap",
 })
 
 function HomeCarousel() {
   return (
-    <ContainerCarousel>
+    <ContainerCarousel
+      initial="hide"
+      variants={{
+        show: { opacity: 1 },
+        hide: { opacity: 0 },
+      }}
+      transition={{ duration: 1 }}
+      whileInView="show"
+      viewport={{ margin: "-250px" }}
+    >
       <ImageReveal src="/img/1.png" css={{ width: "22%" }} />
       <ImageReveal src="/img/1.png" css={{ width: "29%", mr: "1%", ml: "auto", mt: "20%" }} />
       <ImageReveal src="/img/1.png" css={{ width: "30%", mt: "0%" }} />

@@ -1,10 +1,10 @@
 import { motion } from "framer-motion"
 import { styled } from "~/stitches.config"
+import { Box } from "../Atoms/Box"
 import { LinkUnderlined } from "../Links"
 
 const ContainerStyled = styled(motion.div, {
   boxSizing: "border-box",
-  //   height: "100vh",
   px: "5vw",
   py: "10vh",
   position: "relative",
@@ -20,9 +20,7 @@ const ContainerStyled = styled(motion.div, {
   },
 
   "& .solve": {
-    // height: "50%",
-    // bg: "red",
-    fontSize: "10vw",
+    fontSize: "clamp(45px,10vw,120px)",
     lineHeight: "100%",
     display: "flex",
     flexDirection: "column",
@@ -31,7 +29,7 @@ const ContainerStyled = styled(motion.div, {
   },
 
   "& .motivated": {
-    fontSize: "6vw",
+    fontSize: "clamp(25px,4vw,45px)",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -42,18 +40,19 @@ const ContainerStyled = styled(motion.div, {
   "& .small": {
     fontSize: ".8em",
     fontWeight: "lighter",
+    fontStyle: "italic",
   },
 })
 
 export function HomeAbout() {
   return (
     <ContainerStyled>
-      <div className="container solve">
+      <Box className="container solve">
         <h1>Solve Hard</h1>
         <h1>Problems</h1>
         <h1>Climate</h1>
-      </div>
-      <div className="container motivated">
+      </Box>
+      <Box className="container motivated">
         <div>
           <p>
             Motivated <span className="small">to</span>
@@ -62,12 +61,10 @@ export function HomeAbout() {
           <p className="small">learn new technologies</p>
         </div>
         <hr />
-        <div>
-          <LinkUnderlined arrow css={{ width: "max-content", gap: "1rem", py: "2rem", fontSize: "1.5em" }}>
-            Get to know me
-          </LinkUnderlined>
-        </div>
-      </div>
+        <LinkUnderlined arrow css={{ width: "max-content", gap: "1rem", py: "2rem", fontSize: "1em" }}>
+          Get to know me
+        </LinkUnderlined>
+      </Box>
     </ContainerStyled>
   )
 }

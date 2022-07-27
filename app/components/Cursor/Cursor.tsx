@@ -1,4 +1,4 @@
-import { AnimatePresence, motion, useAnimationControls, type Variant } from "framer-motion"
+import { AnimatePresence, motion, MotionConfig, useAnimationControls, type Variant } from "framer-motion"
 import React from "react"
 import { useMousePosition } from "~/hooks/useMousePosition"
 import { Container } from "./Cursor.styles"
@@ -15,12 +15,12 @@ const outerVariant: CursorVariant = {
     margin: "-.5rem",
     border: "1px solid white",
     display: "block",
-    opacity: 1,
+    // opacity: 1,
   },
   focus: {
     border: "1px solid white",
     background: "white",
-    opacity: 0.7,
+    // opacity: 0.7,
     scale: 2,
     height: "3rem",
     width: "3rem",
@@ -41,16 +41,24 @@ export function Cursor() {
     control.start(state)
   }, [state, control])
 
-  const mixBlendMode = React.useMemo(() => (state == "focus" ? "normal" : "difference"), [state])
+  // const mixBlendMode = React.useMemo(() => (state == "focus" ? "normal" : "difference"), [state])
 
   return (
     <AnimatePresence>
       {active && (
-        <Container animate={{ x, y, opacity: 1 }} style={{ mixBlendMode }} initial={{ opacity: 0 }}>
-          <motion.div style={{ fontSize: "1em" }} className="outer" initial={"basic"} animate={control} variants={outerVariant}>
-            {state == "focus" && "Home"}
-          </motion.div>
-        </Container>
+        <MotionConfig transition={{ duration: 0, scale: { duration: 0.2 } }}>
+          <Container animate={{ x, y, opacity: 1 }} initial={{ opacity: 0 }}>
+            <motion.div
+              style={{ fontSize: "1em", mixBlendMode: "difference" }}
+              className="outer"
+              initial={"basic"}
+              animate={control}
+              variants={outerVariant}
+            >
+              {/* {state == "focus" && "Home"} */}
+            </motion.div>
+          </Container>
+        </MotionConfig>
       )}
     </AnimatePresence>
   )
