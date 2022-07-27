@@ -20,14 +20,23 @@ export function Header(props: HeaderProps) {
     <>
       {/* <HeaderStyled> */}
       <MotionConfig transition={{ duration: 1, ease: "easeInOut" }}>
-        <BoxMotion css={{ overflow: "hidden", position: "fixed", top: "1em", left: "5vw", zIndex: 20, fontSize: "22px" }}>
+        <BoxMotion css={{ overflow: "hidden", position: "fixed", top: "1em", left: "5vw", zIndex: 20, fontSize: "22px", mixBlendMode: "difference" }}>
           <BoxMotion initial={{ y: "1.5em" }} animate={{ y: "0em" }}>
             Rdev
           </BoxMotion>
         </BoxMotion>
         <BoxMotion
           onClick={() => setActive(!active)}
-          css={{ overflow: "hidden", maxHeight: "1.5em", position: "fixed", top: "1em", right: "5vw", zIndex: 20, fontSize: "22px" }}
+          css={{
+            overflow: "hidden",
+            maxHeight: "1.5em",
+            position: "fixed",
+            top: "1em",
+            right: "5vw",
+            zIndex: 20,
+            fontSize: "22px",
+            mixBlendMode: "difference",
+          }}
           animate={active ? "close" : "open"}
           initial="initial"
         >

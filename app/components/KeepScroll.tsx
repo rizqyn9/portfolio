@@ -2,13 +2,15 @@ import { motion, useTime, useTransform } from "framer-motion"
 import { styled } from "~/stitches.config"
 
 const TextSvgStyled = styled("text", {
-  fontSize: 15,
+  fontSize: 10,
+  letterSpacing: "1.5px",
 })
 
 const SVGMotion = styled(motion.svg, {})
 
 const Container = styled("div", {
   position: "fixed",
+  zIndex: 10,
   margin: "auto",
   bottom: "3rem",
   "@md": {
@@ -47,7 +49,7 @@ function KeepScroll() {
           <path id="circle" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" />
         </defs>
         <TextSvgStyled>
-          <textPath xlinkHref="#circle">&bull; Keep &bull; Scrolling &bull; Keep &bull; Scrolling</textPath>
+          <textPath xlinkHref="#circle">✋🏻 Keep Scrolling 😄 Keep Scrolling</textPath>
         </TextSvgStyled>
       </SVGMotion>
     </Container>
