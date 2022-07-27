@@ -100,7 +100,7 @@ export function HomeFooter() {
 
       {/* Copyright */}
       <div className="copyright_container">
-        <p>2020 | Rizqy Prastya A.N - All Right Reseverd</p>
+        <p>2022 | Rizqy Prastya A.N - All Right Reseverd</p>
       </div>
 
       {/* Address */}

@@ -25,6 +25,7 @@ const Wrapper = styled(motion.section, {
 
 const H1Styled = styled(motion.h1, {
   fontSize: "clamp(45px, 13vw, 140px)",
+  overflow: "hidden",
 })
 
 function HomeTitle() {
@@ -36,9 +37,25 @@ function HomeTitle() {
     <>
       <div style={{ height: "100vh", background: "transparent" }}></div>
       <Wrapper style={{}}>
-        <H1Styled style={{ marginRight: "auto", x, y }}>Creative</H1Styled>
+        <H1Styled style={{ marginRight: "auto", x, y }}>
+          <motion.span
+            style={{ display: "block" }}
+            initial={{ y: "1.5em", skewX: "-40deg" }}
+            animate={{ y: "0em", skewX: "0deg" }}
+            transition={{ duration: 1 }}
+          >
+            Creative
+          </motion.span>
+        </H1Styled>
         <H1Styled style={{ marginLeft: "auto", x: x2, y }}>
-          Devel<span style={{ fontSize: ".8em" }}>👋🏼</span>per
+          <motion.span
+            style={{ display: "block" }}
+            initial={{ y: "1.5em", skewX: "-40deg" }}
+            animate={{ y: "0em", skewX: "0deg" }}
+            transition={{ duration: 1, delay: 0.7 }}
+          >
+            Devel<span style={{ fontSize: ".8em" }}>👋🏼</span>per
+          </motion.span>
         </H1Styled>
       </Wrapper>
     </>
