@@ -1,5 +1,6 @@
 import { motion } from "framer-motion"
 import { styled } from "~/stitches.config"
+import { LinkUnderlined } from "../Links"
 
 const ContainerStyled = styled(motion.div, {
   boxSizing: "border-box",
@@ -62,8 +63,9 @@ export function HomeAbout() {
         </div>
         <hr />
         <div>
-          <p>Get to know me</p>
-          <i>Arrow</i>
+          <LinkUnderlined arrow css={{ width: "max-content", gap: "1rem", py: "2rem", fontSize: "1.5em" }}>
+            Get to know me
+          </LinkUnderlined>
         </div>
       </div>
     </ContainerStyled>

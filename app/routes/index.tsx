@@ -1,5 +1,5 @@
 import React from "react"
-import { useScroll, useTransform, motion } from "framer-motion"
+import { useScroll, motion } from "framer-motion"
 import { Header } from "~/components/Header"
 import { Layout } from "~/components/Layout"
 import { HomeTitle } from "~/components/Section"
@@ -8,6 +8,7 @@ import { HomeCarousel } from "~/components/Section/HomeCarousel"
 import { HomeAbout } from "~/components/Section/HomeAbout"
 import { HomeFooter } from "~/components/Section/HomeFooter"
 import { HomeProject } from "~/components/Section/HomeProject"
+import { Toast } from "~/components/TemporayToast"
 
 export default function () {
   const [active, setActive] = React.useState(false)
@@ -16,6 +17,7 @@ export default function () {
 
   return (
     <>
+      <Toast />
       <Header active={active} setActive={setActive} />
       <Layout>
         <KeepScroll />
@@ -32,6 +34,14 @@ export default function () {
       <HomeAbout />
       <HomeProject />
       <HomeFooter />
+      <div style={{ background: "white", color: "black", position: "relative", zIndex: 10 }}>
+        <p style={{ fontSize: "3em", textAlign: "center", padding: "2rem " }}>
+          Built with{" "}
+          <a href="https://remix.run/" target="__blank">
+            Remix ❤️
+          </a>
+        </p>
+      </div>
     </>
   )
 }

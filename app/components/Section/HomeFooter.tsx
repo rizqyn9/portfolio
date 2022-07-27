@@ -2,7 +2,7 @@ import { styled } from "~/stitches.config"
 import { motion } from "framer-motion"
 import { LinkFooter } from "../LinkFooter"
 import { Instagram, Telegram, Github, Linkedin } from "../Icon"
-import { LinksUnderlined } from "../Links"
+import { LinkUnderlined } from "../Links"
 
 const StyledContainer = styled(motion.div, {
   width: "100%",
@@ -24,6 +24,11 @@ const StyledContainer = styled(motion.div, {
   "& .idea_container": {
     width: "100%",
     order: 1,
+
+    "& h2": {
+      fontSize: "1.2em",
+      fontWeight: "bolder",
+    },
   },
 
   "& .nav_container": {
@@ -69,7 +74,9 @@ export function HomeFooter() {
       {/* Idea */}
       <div className="idea_container">
         <h2>Have an idea ?</h2>
-        <LinksUnderlined css={{ width: "max-content", gap: "1rem", py: "1rem", textTransform: "uppercase" }}>Get in touch</LinksUnderlined>
+        <LinkUnderlined arrow css={{ width: "max-content", gap: "1rem", py: "1rem", textTransform: "uppercase" }}>
+          Get in touch
+        </LinkUnderlined>
       </div>
 
       {/* Nav Footer */}

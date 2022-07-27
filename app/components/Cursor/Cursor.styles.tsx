@@ -13,6 +13,12 @@ export const Container = styled(motion.div, {
   zIndex: "100",
   // mixBlendMode: "difference",
 
+  display: "none",
+
+  "@md": {
+    display: "block",
+  },
+
   "& .outer": {
     position: "relative",
     borderRadius: "100%",

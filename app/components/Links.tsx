@@ -23,26 +23,28 @@ const LinkStyled = styled(Link, {
     borderRadius: "999px",
     transition: "width .8s",
   },
+  transition: "letter-spacing .8s",
 
   "&:hover": {
+    letterSpacing: "1px",
     "& p::before": {
       width: 0,
     },
   },
 })
 
-type LinksUnderlinedProps = {
+type LinkUnderlinedProps = {
   to?: string
   children: React.ReactNode
   arrow?: boolean
   css?: CSS
 }
 
-export function LinksUnderlined(props: LinksUnderlinedProps) {
+export function LinkUnderlined(props: LinkUnderlinedProps) {
   return (
     <LinkStyled to={props.to || "/"} css={{ ...props.css }}>
       <p>{props.children}</p>
-      <Arrow />
+      {props.arrow && <Arrow />}
     </LinkStyled>
   )
 }

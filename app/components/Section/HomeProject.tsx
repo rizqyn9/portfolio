@@ -1,5 +1,7 @@
 import { styled } from "~/stitches.config"
 import { motion } from "framer-motion"
+import { LinkUnderlined } from "../Links"
+import { ProjectPreview, ProjectPreviewContainer } from "../ProjectPreview"
 
 const StyledContainer = styled(motion.div, {
   bg: "white",
@@ -26,9 +28,13 @@ const StyledContainer = styled(motion.div, {
   },
 
   "& .list_project": {
+    bg: "red",
     mt: "3rem",
     width: "100%",
     order: 2,
+    "@md": {
+      position: "relative",
+    },
   },
 
   "& .preview": {
@@ -78,29 +84,11 @@ export function HomeProject() {
 
       {/* Link Button Project */}
       <div className="more">
-        <p>SEE - ALL</p>
-        <hr />
+        <LinkUnderlined css={{ fontSize: "inherit" }}>SEE - ALL</LinkUnderlined>
       </div>
 
       {/* Accordion */}
-      <ul className="list_project">
-        <hr />
-        <li className="container_list">
-          <p>Project 1</p>
-          <p>Front end</p>
-        </li>
-        <hr />
-        <li className="container_list">
-          <p>Project 1</p>
-          <p>Front end</p>
-        </li>
-        <hr />
-        <li className="container_list">
-          <p>Project 1</p>
-          <p>Front end</p>
-        </li>
-        <hr />
-      </ul>
+      <ProjectPreviewContainer />
 
       {/* Preview */}
       <div className="preview">
