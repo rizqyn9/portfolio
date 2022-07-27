@@ -15,9 +15,7 @@ export default function Document(props: DocumentProps) {
         <Links />
       </head>
       <body>
-        <Layout header headerProps={{ offsetHeight: 256 }}>
-          {children}
-        </Layout>
+        {children}
         <Scripts />
         <LiveReload />
       </body>
